@@ -61,4 +61,14 @@ class User extends Authenticatable
     public function reservations(){
         return $this->hasMany('App\Reservation');
     }
+    public function totalChart(){
+        return $this->hasMany('App\totalChart');
+
+    }   public function Earning(){
+        return $this->hasMany('App\Earning');
+    }
+
+   public function BuyersofCrop(){
+    return $this->hasMany('App\BuyersofCrop');
+}
 }

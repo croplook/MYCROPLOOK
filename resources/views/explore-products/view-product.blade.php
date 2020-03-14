@@ -13,7 +13,6 @@
         <h6>Description: {{$post->crop_desc}}</h6>
         <h6>Crop Status: {{$post->crop_status}}</h6>
         <h6>Crop Inventory: {{$post->crop_quantity}}</h6>
-        <h6>Harvest Period: {{$post->crop_harvestPeriod}}</h6>
         <h6>Farmer: {{$post->user->name}}</h6>
 
     </div>
@@ -21,6 +20,8 @@
 
     <small> Posted on {{$post->created_at}}</small>
     <hr>
+    <h6>Harvest Period: {{$post->crop_harvestPeriod}}</h6>
+    <h6>Minimum Qty: 5Kg</h6>
     @if(!Auth::guest())
     @if(Auth::user()->id == $post->user_id)
         <a href="/mycroplook/public/explore-products/{{$post->id}}/edit" class ="btn btn-default.inline-block bg-dark text-light">Edit</a>
@@ -28,6 +29,8 @@
             {{Form::hidden('_method', 'DELETE')}}
             {{Form::submit('Delete', ['class' => 'btn btn-danger'])}}
             {!!Form::close()!!}
+
             @endif
     @endif
+    <a href="{{ route('reservation.startReservation', ['id' => $post->id]) }}" class="btn btn-success pull-left" role="button">Reserve Crop</a></p>
    @endsection

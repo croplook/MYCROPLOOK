@@ -31,7 +31,6 @@ class ExploreProductsController extends Controller
         //$posts = Post::orderBy('crop_name','desc')->take(1)->get();
         $posts = Post::orderBy('crop_name','desc')->paginate(6);
 
-
         //$posts = Post::orderBy('created_at','desc')->get();
         return view('explore-products.index')
         ->with('posts', $posts);

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Post;
 use App\Lands;
+use App\totalChart;
 use Charts;
 use DB;
 use App\Charts\productsChart;
@@ -21,7 +22,6 @@ class PagesController extends Controller
         //$posts = Post::orderBy('crop_name','desc')->take(1)->get();
         $posts = Post::orderBy('crop_name','desc')->take(3)->get();
 
-        // $allPosts = Post::orderBy('crop_name','desc')->get();
         $user_lands = Lands::orderBy('name_of_company','desc')->take(3)->get();
 
         // $allposts = Post::where(DB::raw("(DATE_FORMAT(created_at,'%Y'))"), date('Y'))->get();
@@ -40,9 +40,19 @@ class PagesController extends Controller
         // $chart->labels($allPosts->keys());
         // $chart->dataset('Crops', 'line', $allPosts->values());
 
+        $totalQty = totalChart::orderBy('created_at')
+        ->pluck('sumCropQty','crop_name');
+
+       $totalPrice = totalChart::orderBy('created_at')
+        ->pluck('avgCropPrice','crop_name');
+
         $chart = new productsChart;
-        $chart->labels(['One', 'Two', 'Three']);
-        $chart->dataset('My dataset', 'line', [1, 2, 3]);
+        $chart->labels($totalQty->keys());
+        $chart->dataset('Crop Availability', 'bar', $totalQty->values())
+        ->backgroundColor('green');
+        $chart->dataset('Crops Average Price', 'line', $totalPrice->values())
+        ->backgroundColor('grey');
+
 
         // $chart = Charts::database($allposts, 'bar', 'highcharts')
         // ->title('Product Details')
@@ -54,8 +64,8 @@ class PagesController extends Controller
         return view('pages.index')
         ->with('posts', $posts)
         ->with('user_lands', $user_lands)
-        ->with('chart', $chart);
-
+        ->with('chart', $chart)
+        ->with('allPosts', $totalQty);
     }
     public function admin(){
         $title = "Admin Dashboard";

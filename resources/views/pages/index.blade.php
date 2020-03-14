@@ -11,16 +11,14 @@
     <h1>Welcome to CropLook!</h1>
     <h5 >Barangay Kapatagan Agricultural Trading Portal with Real-Time SMS Notification for Crop-Growth Monitoring</h5>
    </div>
-    <div class="container"><iframe class="chartjs-hidden-iframe" tabindex="-1" style="display: block; overflow: hidden; border: 0px; margin: 0px; top: 0px; left: 0px; bottom: 0px; right: 0px; height: 100%; width: 100%; position: absolute; pointer-events: none; z-index: -1;"></iframe>
-      <canvas id="myChart" width="720" height="360" style="display: block; width: 720px; height: 360px;"></canvas>
-    </div>
-
-   <div style="width:50%">
-
+<div class="row">
+       <h4>Crop Statistics</h4>
+   <div class="flex">
+       <div class="w 1/2">
     {!! $chart->container() !!}
-
+    </div>
    </div>
-
+</div>
    <div class="row">
        <div class="col-md-6 col-sm-6">
             <h2>Explore Products</h2>
