@@ -71,4 +71,7 @@ class User extends Authenticatable
    public function BuyersofCrop(){
     return $this->hasMany('App\BuyersofCrop');
 }
+public function cropSalesChart(){
+    return $this->hasMany('App\cropSalesChart');
+}
 }

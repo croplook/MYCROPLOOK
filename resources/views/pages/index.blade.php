@@ -12,14 +12,21 @@
     <h5 >Barangay Kapatagan Agricultural Trading Portal with Real-Time SMS Notification for Crop-Growth Monitoring</h5>
    </div>
 <div class="row">
-       <h4>Crop Statistics</h4>
    <div class="flex">
+       <h4>Crop Statistics</h4>
        <div class="w 1/2">
     {!! $chart->container() !!}
     </div>
    </div>
+<div class="flex">
+    <h4>Crops Sales</h4>
+    <div class="w 1/2">
+ {!! $salesChart->container() !!}
+ </div>
 </div>
-   <div class="row">
+</div>
+
+<div class="row">
        <div class="col-md-6 col-sm-6">
             <h2>Explore Products</h2>
         </div>
@@ -78,6 +85,7 @@
      @endif
      </div>
      {!! $chart->script() !!}
+     {!! $salesChart->script() !!}
 
 
   </body>

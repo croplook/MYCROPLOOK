@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Post;
 use App\Lands;
 use App\totalChart;
+use App\Charts\postsChart;
+use App\cropSalesChart;
 use Charts;
 use DB;
 use App\Charts\productsChart;
@@ -46,13 +48,37 @@ class PagesController extends Controller
        $totalPrice = totalChart::orderBy('created_at')
         ->pluck('avgCropPrice','crop_name');
 
+
+        $salesKg = cropSalesChart::orderBy('created_at')
+        ->pluck('totalKgSold','crop_name');
+
+        $salesFixedQuantity = cropSalesChart::orderBy('created_at')
+        ->pluck('totalFixedQty','crop_name');
+
         $chart = new productsChart;
         $chart->labels($totalQty->keys());
         $chart->dataset('Crop Availability', 'bar', $totalQty->values())
         ->backgroundColor('green');
-        $chart->dataset('Crops Average Price', 'line', $totalPrice->values())
+        // $chart->dataset('Crops Average Price', 'line', $totalPrice->values())
+        // ->backgroundColor('grey');
+        $chart->dataset('Crops Fixed Quantity', 'bubble', $salesFixedQuantity->values())
+        ->backgroundColor('red');
+        $chart->dataset('Crop Sales Kilogram', 'line', $salesKg->values())
         ->backgroundColor('grey');
 
+        $data = cropSalesChart::orderBy('created_at')
+        ->pluck('totalFixedQty', 'totalKgSold');
+
+        $salesPercentage = cropSalesChart::orderBy('created_at')
+        ->pluck('totalPercentage','crop_name');
+
+
+        $salesChart = new postsChart;
+        $salesChart->labels($salesKg->keys());
+        $salesChart->dataset('Crop Sales Kilogram', 'bar', $salesKg->values())
+        ->backgroundColor('green');
+        $salesChart->dataset('Crops Sales Percentage', 'line', $salesPercentage->values())
+        ->backgroundColor('grey');
 
         // $chart = Charts::database($allposts, 'bar', 'highcharts')
         // ->title('Product Details')
@@ -65,6 +91,7 @@ class PagesController extends Controller
         ->with('posts', $posts)
         ->with('user_lands', $user_lands)
         ->with('chart', $chart)
+        ->with('salesChart', $salesChart)
         ->with('allPosts', $totalQty);
     }
     public function admin(){
