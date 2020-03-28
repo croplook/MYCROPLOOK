@@ -11,7 +11,7 @@
 
                     @if(count($user_profile) > 0)
                     @foreach ($user_profile as $current_user)
-                    <img style="height: 200px; width: 200px; border-radius: 50%;" class="img-responsive" src="/mycroplook/storage/app/mycroplook/storage/app/public/userImage/{{$current_user->user_image}}">
+                    <img style="height: 200px; width: 200px; border-radius: 50%;" class="img-responsive" src="/storage/uploads/userImage/{{$current_user->user_image}}">
                     <h2>{{$current_user->first_name}} {{$current_user->middle_name}} {{$current_user->last_name}}</h2>
                     <p><strong>Birthday: </strong> {{$current_user->birthday}} </p>
                     <p><strong>Mobile Number: </strong>{{$current_user->mobile_no}} </p>

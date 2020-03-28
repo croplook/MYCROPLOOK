@@ -38,10 +38,35 @@ class ReservationController extends Controller
 
     }
 
+    // public function getReservationsNavbar(){
+    //     if (!Session::has('reservation')){
+    //         return view('reservation.my-reservations');
+    //     }
+    //     $oldReservation = Session::get('reservation');
+    //     $reservation = new Reservation($oldReservation);
+    //     $posts = $reservation->posts;
+    //     $totalPrice = $reservation->totalPrice;
+    //     return $totalPrice;
+
+    // }
+
     public function getReduceByOne($id){
         $oldReservation = Session::has('reservation') ? Session::get('reservation') : null;
         $reservation = new Reservation($oldReservation);
          $reservation->reduceByOne($id);
+
+         if(count($reservation->posts) > 0){
+            Session::put('reservation', $reservation);
+        }else{
+            Session::forget('reservation');
+        }
+         return redirect()->route('reservation.reservationCart');
+    }
+
+    public function getAddByOne($id){
+        $oldReservation = Session::has('reservation') ? Session::get('reservation') : null;
+        $reservation = new Reservation($oldReservation);
+         $reservation->addByOne($id);
 
          if(count($reservation->posts) > 0){
             Session::put('reservation', $reservation);

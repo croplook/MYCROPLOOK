@@ -23,10 +23,20 @@ Route::get('/reservation/my-reservations',
 ['uses' => 'ReservationController@getReservations',
 'as' => 'reservation.reservationCart']);
 
+// //click navbar reservation
+// Route::get('/reservation/navbar',
+// ['uses' => 'ReservationController@getReservationsNavbar',
+// 'as' => 'reservation.navbarReservation']);
+
 //reduce one in reservation cart
 Route::get('reduce/{id}',
     ['uses' => 'ReservationController@getReduceByOne',
     'as' => 'reservation.reduceByOne']);
+
+
+    Route::get('additional/{id}',
+    ['uses' => 'ReservationController@getAddByOne',
+    'as' => 'reservation.addByOne']);
 //remove crop in reservation cart
 Route::get('remove/{id}',
     ['uses' => 'ReservationController@getRemoveItem',
@@ -67,6 +77,10 @@ Route::get('/users/add-lands/', ['uses' => 'MyLandsController@addlands', 'as' =>
 Route::post('/users/user-lands/', ['uses' => 'MyLandsController@storelands']);
 // view farmer
 Route::get('/explore-farms/view-farmer/', ['uses' => 'ExploreFarmsController@viewFarmer', 'as' => 'farm.viewDFarmer']);
+
+
+// product statistics
+Route::get('/users/prod-statistics/', ['uses' => 'DashboardController@prodStat', 'as' => 'users.prod-stat']);
 
 Route::get('/', 'PagesController@index');
 Route::get('/admin', 'PagesController@admin');

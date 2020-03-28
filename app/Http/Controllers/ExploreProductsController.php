@@ -31,6 +31,7 @@ class ExploreProductsController extends Controller
         //$posts = Post::orderBy('crop_name','desc')->take(1)->get();
         $posts = Post::orderBy('crop_name','desc')->paginate(6);
 
+        // <h4>Harvest Period: December - {{$post->startHarvestYear}}</h4>
         //$posts = Post::orderBy('created_at','desc')->get();
         return view('explore-products.index')
         ->with('posts', $posts);
@@ -67,7 +68,10 @@ class ExploreProductsController extends Controller
             'cropQuantity' => 'required',
             'cropDesc'=> 'required',
             'cropPrice' => 'required',
-            'cropHrvstPeriod' => 'required',
+            'startHarvestMonth' => 'required',
+            'startHarvestYear' => 'required',
+            'endHarvestMonth' => 'required',
+            'endHarvestYear' => 'required',
             'cropImage' => 'Image|nullable'
 
         ]);
@@ -83,7 +87,7 @@ class ExploreProductsController extends Controller
             $extension= $request->file('cropImage')->getClientOriginalExtension();
             $filenameToStore = $filename.'_'.time().'.'.$extension;
             // upload image
-            $path = $request->file('cropImage')->storeAs('/mycroplook/storage/app/public/cropImage/', $filenameToStore);
+            $path = $request->file('cropImage')->storeAs('public/uploads/cropImage/', $filenameToStore);
 
         } else{
             $filenameToStore = 'no-image.jpg';
@@ -96,13 +100,16 @@ class ExploreProductsController extends Controller
         $post->crop_desc = $request->input('cropDesc');
         $post->crop_quantity = $request->input('cropQuantity');
         $post->crop_status = $request->input('cropStatus');
-        $post->crop_harvestPeriod = $request->input('cropHrvstPeriod');
+        $post->startHarvestMonth = $request->input('startHarvestMonth');
+        $post->startHarvestYear = $request->input('startHarvestYear');
+        $post->endHarvestMonth = $request->input('endHarvestMonth');
+        $post->endHarvestYear = $request->input('endHarvestYear');
         $post->user_id =auth()->user()->id;
         $post->crop_image = $filenameToStore;
 
         $post->save();
 
-        return redirect('/explore-products')->with('success', 'Post Created');
+        return redirect('/dashboard')->with('success', 'Post Created');
 
     }
 
@@ -168,7 +175,7 @@ class ExploreProductsController extends Controller
             $extension= $request->file('cropImage')->getClientOriginalExtension();
             $filenameToStore = $filename.'_'.time().'.'.$extension;
             // upload image
-            $path = $request->file('cropImage')->storeAs('mycroplook/storage/app/public/cropImage/', $filenameToStore);
+            $path = $request->file('cropImage')->storeAs('public/uploads/cropImage/', $filenameToStore);
 
         }
 
@@ -178,22 +185,30 @@ class ExploreProductsController extends Controller
             'cropQuantity' => 'required',
             'cropDesc'=> 'required',
             'cropPrice' => 'required',
-            'cropHrvstPeriod' => 'required',
-            'cropImage'=> 'image|nullable'
-        ]);
+            'startHarvestMonth' => 'required',
+            'startHarvestYear' => 'required',
+            'endHarvestMonth' => 'required',
+            'endHarvestYear' => 'required',
+            'cropImage' => 'Image|nullable'
 
-        //create post
+        ]);
         $post = Post::find($id);
         $post->crop_name = $request->input('cropName');
         $post->crop_price = $request->input('cropPrice');
         $post->crop_desc = $request->input('cropDesc');
         $post->crop_quantity = $request->input('cropQuantity');
         $post->crop_status = $request->input('cropStatus');
-        $post->crop_harvestPeriod = $request->input('cropHrvstPeriod');
+        $post->startHarvestMonth = $request->input('startHarvestMonth');
+        $post->startHarvestYear = $request->input('startHarvestYear');
+        $post->endHarvestMonth = $request->input('endHarvestMonth');
+        $post->endHarvestYear = $request->input('endHarvestYear');
+        $post->user_id =auth()->user()->id;
         if($request->hasFile('cropImage')){
             $post->crop_image = $filenameToStore;
             }
         $post->save();
+
+
 
         return redirect('/dashboard')->with('success', 'Post Updated');
 

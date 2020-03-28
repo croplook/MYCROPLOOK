@@ -7,7 +7,7 @@
     <div class="container pb20">
         <div class="mb20 farm-container">
             <div class="col-12 p0 img img10 m15" style=" background-image:url('/static/home_assets/img/bg-explore-farms.png');">
-                <img style=" display:block; width:100%; height: 350px;" src="/mycroplook/storage/app/mycroplook/storage/app/public/landImage/{{$farm->land_image}}">
+                <img style=" display:block; width:100%; height: 350px;" src="/storage/uploads/landImage/{{$farm->land_image}}">
 
 
                 <div class="align-right" style="position:absolute; top:10%; right:3%; width:100%;">
@@ -69,7 +69,7 @@
                         <div class="card align-items-center border-none">
                             <div class="mt20">
 
-                                <img style="background:#4B524E; width:100px; height:100px; border-radius:58.5px;" src="/mycroplook/storage/app/mycroplook/storage/app/public/userImage/{{$farm->user_image}}">
+                                <img style="background:#4B524E; width:100px; height:100px; border-radius:58.5px;" src="/storage/uploads/userImage/{{$farm->user_image}}">
                             </div>
                             <div class="card-body pt15 pb0">
                                 <h5 class="mb0">{{$farm->first_name}} {{$farm->middle_name}} {{$farm->last_name}}</h5>
@@ -101,8 +101,8 @@
                                         <div class="card border-none">
 
                                             {{-- pahelp kay mark hahahaha --}}
-                                            <a href="/mycroplook/public/explore-products">
-                                                <img class="card-img-top" src="/mycroplook/storage/app/mycroplook/storage/app/public/cropImage/{{$farmproduct->crop_image}}" alt="Explore Image">
+                                            <a href="/explore-products">
+                                                <img class="card-img-top" src="/storage/uploads/cropImage/{{$farmproduct->crop_image}}" alt="Explore Image">
                                                 <div class="card-img-overlay overlay d-flex flex-column p0 tag-img">
                                                     <!-- <p class="card-tag-solid text-lato-bold">In Season</p> -->
                                                 </div>

@@ -54,6 +54,16 @@ class Reservation
             }
         }
 
+        public function addByOne($id){
+            $this->posts[$id]['qty']++;
+            $this->posts[$id]['price'] += $this->posts[$id]['item']['crop_price'];
+            $this->totalQty++;
+            $this->totalPrice += $this->posts[$id]['item']['crop_price'];
+
+            if($this->posts[$id]['qty']<=0){
+                unset($this->posts[$id]);
+            }
+        }
         public function removeItem($id){
             $this->totalQty -= $this->posts[$id]['qty'];
             $this->totalPrice -= $this->posts[$id]['price'];

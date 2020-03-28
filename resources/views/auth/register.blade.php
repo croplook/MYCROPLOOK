@@ -15,7 +15,8 @@
                             <label for="register_as" class="col-md-4 col-form-label text-md-right">{{ __('Register as') }}</label>
 
                             <div class="col-md-6">
-                                {{Form::select('register_as', array('2' => 'Buyer', '1' => 'Farmers','0' => 'Admin'))}}
+                                {{Form::select('register_as', array('2' => 'Buyer', '1' => 'Farmers','0' => 'Admin'),
+                                null, ['class' => 'form-control', 'placeholder' => ''])}}
                                 @error('register_as')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

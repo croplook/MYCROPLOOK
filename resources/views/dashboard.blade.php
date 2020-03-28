@@ -2,10 +2,10 @@
 
 @section('content')
 
-<?php $folderName = '/mycroplook/public' ?>
 <div class="container">
     <h3>Dashboard</h3>
-     <a href="<?php echo $folderName ?>/explore-products/create" class="btn btn-primary" style="margin-bottom:1rem">Add Product</a>
+     <a href="/explore-products/create" class="btn btn-primary" style="margin-bottom:1rem">Add Product</a>
+<a href="{{route('users.prod-stat')}}" class="btn btn-success" style="margin-bottom:1rem">Products Statistics</a>
 
         <div class="row">
             @if (session('status'))
@@ -21,9 +21,9 @@
         @foreach($posts as $post)
                 <div class="col-sm-6 col-md-4 border-dark">
                     <div class="thumbnail" style="margin:10px" >
-                    <a href="<?php echo $folderName ?>/explore-products/{{$post->id}}/edit/">
+                    <a href="/explore-products/{{$post->id}}/edit/">
                         <div class="card-img lazy" style="height: 200px;">
-                            <img style="height: 200px; width: 100%" src="/mycroplook/storage/app/mycroplook/storage/app/public/cropImage/{{$post->crop_image}}">
+                            <img style="height: 200px; width: 100%" src="/storage/uploads/cropImage/{{$post->crop_image}}">
                         </div>
                         <div class="card-body">
                             <h6 class="mb0">{{$post->crop_name}}</h6>

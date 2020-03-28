@@ -20,7 +20,6 @@ class CreatePostsTable extends Migration
             $table->string('crop_desc');
             $table->string('crop_quantity');
             $table->string('crop_status');
-            $table->string('crop_harvestPeriod');
             $table->timestamps();
 
         });

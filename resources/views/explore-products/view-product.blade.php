@@ -2,12 +2,12 @@
 
 @section('content')
 
-<a href="/mycroplook/public/explore-products" class="btn btn-secondary" style="margin-bottom:2rem">Go Back</a>
+<a href="/explore-products" class="btn btn-secondary" style="margin-bottom:2rem">Go Back</a>
 
 
 <h1>{{$post->crop_name}}</h1>
     <div>
-<img style="" class="mi i" src="/mycroplook/storage/app/mycroplook/storage/app/public/cropImage/{{$post->crop_image}}">
+<img style="" class="mi i" src="/storage/uploads/cropImage/{{$post->crop_image}}">
                <br><br>
         <h6>Crop Price: <b>{{$post->crop_price}}</b> / kg</h6>
         <h6>Description: {{$post->crop_desc}}</h6>
@@ -24,7 +24,7 @@
     <h6>Minimum Qty: 5Kg</h6>
     @if(!Auth::guest())
     @if(Auth::user()->id == $post->user_id)
-        <a href="/mycroplook/public/explore-products/{{$post->id}}/edit" class ="btn btn-default.inline-block bg-dark text-light">Edit</a>
+        <a href="/explore-products/{{$post->id}}/edit" class ="btn btn-default.inline-block bg-dark text-light">Edit</a>
            {!!Form::open(['action' => ['ExploreProductsController@destroy', $post->id], 'method' =>'POST'])!!}
             {{Form::hidden('_method', 'DELETE')}}
             {{Form::submit('Delete', ['class' => 'btn btn-danger'])}}
@@ -32,5 +32,5 @@
 
             @endif
     @endif
-    <a href="{{ route('reservation.startReservation', ['id' => $post->id]) }}" class="btn btn-success pull-left" role="button">Reserve Crop</a></p>
+    <a href="{{ route('reservation.startReservation', ['id' => $post->id]) }}" class="btn btn-success pull-left" role="button">Order Crop</a></p>
    @endsection

@@ -77,7 +77,7 @@ class MyAccountController extends Controller
                     $extension= $request->file('userImage')->getClientOriginalExtension();
                     $filenameToStore = $filename.'_'.time().'.'.$extension;
                     // upload image
-                    $path = $request->file('userImage')->storeAs('/mycroplook/storage/app/public/userImage/', $filenameToStore);
+                    $path = $request->file('userImage')->storeAs('public/uploads/userImage/', $filenameToStore);
 
                 } else{
                     $filenameToStore = 'no-image.jpg';
@@ -143,7 +143,7 @@ class MyAccountController extends Controller
                 $extension= $request->file('userImage')->getClientOriginalExtension();
                 $filenameToStore = $filename.'_'.time().'.'.$extension;
                 // upload image
-                $path = $request->file('userImage')->storeAs('/mycroplook/storage/app/public/userImage/', $filenameToStore);
+                $path = $request->file('userImage')->storeAs('public/uploads/userImage/', $filenameToStore);
 
             }
 

@@ -7,6 +7,7 @@ use App\Post;
 use App\Lands;
 use App\totalChart;
 use App\Charts\postsChart;
+use App\Charts\spanChart;
 use App\cropSalesChart;
 use Charts;
 use DB;
@@ -55,8 +56,16 @@ class PagesController extends Controller
         $salesFixedQuantity = cropSalesChart::orderBy('created_at')
         ->pluck('totalFixedQty','crop_name');
 
+
         $chart = new productsChart;
-        $chart->labels($totalQty->keys());
+        $chart->labels($totalQty->keys())->options([
+            'legend' => [
+                'display' => true,
+                'position' => 'top',
+                'fullWidth' => true,
+                'align' => 'start'
+                ]
+            ]);
         $chart->dataset('Crop Availability', 'bar', $totalQty->values())
         ->backgroundColor('green');
         // $chart->dataset('Crops Average Price', 'line', $totalPrice->values())
@@ -73,13 +82,22 @@ class PagesController extends Controller
         ->pluck('totalPercentage','crop_name');
 
 
-        $salesChart = new postsChart;
+       $salesChart = new postsChart;
         $salesChart->labels($salesKg->keys());
         $salesChart->dataset('Crop Sales Kilogram', 'bar', $salesKg->values())
         ->backgroundColor('green');
         $salesChart->dataset('Crops Sales Percentage', 'line', $salesPercentage->values())
         ->backgroundColor('grey');
 
+        // $salesSpan = totalChart::orderBy('created_at')
+        // ->pluck('crop_name','created_at');
+
+        // $spanChart = new spanChart;
+        // $spanChart->labels($salesSpan->keys());
+        // $spanChart->dataset('Crops', 'line', $salesSpan->values())
+        // ->backgroundColor('green');
+        // $spanChart->dataset('Crops Sales Percentage', 'line', $salesPercentage->values())
+        // ->backgroundColor('grey');
         // $chart = Charts::database($allposts, 'bar', 'highcharts')
         // ->title('Product Details')
         // ->elementLabel('Total Products')
@@ -90,6 +108,7 @@ class PagesController extends Controller
         return view('pages.index')
         ->with('posts', $posts)
         ->with('user_lands', $user_lands)
+        ->with('$totalQty', $totalQty)
         ->with('chart', $chart)
         ->with('salesChart', $salesChart)
         ->with('allPosts', $totalQty);
