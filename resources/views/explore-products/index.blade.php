@@ -53,9 +53,10 @@
               <div class="clearfix">
                   <div class="float-left price">₱ {{$post->crop_price}} /kg</div>
               <p>
-
+                @can('isBuyer')
                 <a href="{{ route('reservation.startReservation', ['id' => $post->id]) }}" class="btn btn-success pull-right" role="button">Order Crop</a></p>
-                </div>
+                @endcan
+            </div>
 
             </div>
 

@@ -12,7 +12,6 @@
 */
 
 
-
 //click sa reserve crop
 Route::get('/reservation/start-reservation/{id}',
 ['uses' => 'ReservationController@startReservation',
@@ -33,10 +32,12 @@ Route::get('reduce/{id}',
     ['uses' => 'ReservationController@getReduceByOne',
     'as' => 'reservation.reduceByOne']);
 
-
+//add crop in reservation cart
     Route::get('additional/{id}',
     ['uses' => 'ReservationController@getAddByOne',
     'as' => 'reservation.addByOne']);
+
+
 //remove crop in reservation cart
 Route::get('remove/{id}',
     ['uses' => 'ReservationController@getRemoveItem',
@@ -47,12 +48,12 @@ Route::get('/reservation/checkout',
 ['uses' => 'ReservationController@getCheckout',
 'as' => 'checkout',
 'middleware' => 'auth']);
-//click sa buy now
+
+//click sa place order
 Route::post('/reservation/checkout',
 ['uses' => 'ReservationController@postCheckout',
 'as' => 'checkout',
 'middleware' => 'auth']);
-
 
 
 Route::get('/reservation/confirm-reservations', ['uses' => 'ReservationController@confirmReservation', 'as' => 'placeorder']);
@@ -81,6 +82,10 @@ Route::get('/explore-farms/view-farmer/', ['uses' => 'ExploreFarmsController@vie
 
 // product statistics
 Route::get('/users/prod-statistics/', ['uses' => 'DashboardController@prodStat', 'as' => 'users.prod-stat']);
+
+Route::get('/users/orders-confirmation/', ['uses' => 'DashboardController@getOrdersConfirmation', 'as' => 'users.orders-confirmation']);
+
+
 
 Route::get('/', 'PagesController@index');
 Route::get('/admin', 'PagesController@admin');

@@ -5,7 +5,8 @@
 <div class="container">
     <h3>Dashboard</h3>
      <a href="/explore-products/create" class="btn btn-primary" style="margin-bottom:1rem">Add Product</a>
-<a href="{{route('users.prod-stat')}}" class="btn btn-success" style="margin-bottom:1rem">Products Statistics</a>
+     <a href="{{route('users.prod-stat')}}" class="btn btn-success" style="margin-bottom:1rem">Products Statistics</a>
+     <a href="{{route('users.orders-confirmation')}}" class="btn btn-info" style="margin-bottom:1rem">Orders Status</a>
 
         <div class="row">
             @if (session('status'))

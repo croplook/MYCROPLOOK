@@ -49,7 +49,7 @@
                 <span class="badge bg-light text-black-50">
                     {{Session::has('reservation') ? Session::get('reservation')->totalQty : ''}}
                    </span><i class="fa fa-shopping-basket" aria-hidden="true"></i>
-                My Orders<span class="caret"></span>
+                My Reservations<span class="caret"></span>
                 </a>
 
                 <ul class="nav-item dropdown  navbar-left">
@@ -60,10 +60,13 @@
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-
+                    @can('isFarmer')
                     <li><a class="dropdown-item" href="/dashboard" >Dashboard</a> </li>
+                    @endcan
                     <li><a class="dropdown-item" href="{{ route('myaccount') }}"  >My Account</a> </li>
+                    @can('isBuyer')
                     <li><a class="dropdown-item" href="{{ route('myorders') }}"  >My Orders</a> </li>
+                    @endcan
                     <hr>
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                onclick="event.preventDefault();

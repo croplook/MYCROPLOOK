@@ -24,18 +24,21 @@
 							 							<div class="product-name">
 								 							<h5><strong><a href="#">{{ $post['item']['crop_name']}}</a></strong></h5>
 								 							<div class="product-info">
-									 							<div><strong>Price: </strong><span class="value">{{ $post['item']['crop_price'] }} /kg</span></div>
+									 							<div><strong>Price: </strong><span class="value">₱ {{ $post['item']['crop_price'] }} /kg</span></div>
 									 							<div><strong>Description: </strong><span class="value">{{ $post['item']['crop_desc'] }}</span></div>
-                                                                <div><strong>Harvest Period: </strong><span class="value">{{ $post['item']['startHarvestMonth'] }} {{ $post['item']['startHarvestYear'] }} - {{ $post['item']['endHarvestMonth'] }} {{ $post['item']['endHarvestYear'] }}</span></div>
+                                                                <div><strong>Harvest Period: </strong><span class="value">{{ $post['item']['startHarvestMonth'] }} {{ $post['item']['startHarvestYear'] }} - {{ $post['item']['endHarvestMonth'] }} {{ $post['item']['endHarvestYear'] }}</span></div><div><strong>Description: </strong><span class="value">{{ $post['item']['crop_desc'] }}</span></div>
+                                                                {{-- <div><strong>Grower: </strong><span class="value">{{$post->user->name}}</span></div> --}}
+
+
                                                                 <hr>
-                                                                <div><strong>Total Price: </strong><span class="value">{{ $post['price'] }}</span></div>
+                                                                <div><strong>Total Price: </strong><span class="value">₱ {{ $post['price'] }}</span></div>
 
 									 						</div>
 									 					</div>
                                                      </div>
                                                     <div class="col-md-4">
 							 						<div class="w-100 quantity">
-                                                         <div style="height: 50px"><span class="">
+                                                         <div class="" style="height: 50px"><span class="centerspan">
                                                             <label for="quantity">Quantity:</label>
                                                          <span class="badge bg-dark text-white">{{ $post['qty']}}</span>
                                                             <a href="{{ route('reservation.removeItem', ['id' => $post['item']['id']])}}"- type="button" class="btn btn-outline-danger btn-sm">

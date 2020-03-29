@@ -32,5 +32,7 @@
 
             @endif
     @endif
+    @can('isBuyer')
     <a href="{{ route('reservation.startReservation', ['id' => $post->id]) }}" class="btn btn-success pull-left" role="button">Order Crop</a></p>
-   @endsection
+    @endcan
+    @endsection

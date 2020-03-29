@@ -99,7 +99,7 @@ class ReservationController extends Controller
         $reservation = new Reservation($oldReservation);
 
         $total = $reservation->totalPrice;
-        return view('reservation.checkout', ['total' => $total]);
+        return view('reservation.checkout', ['total' => $total, 'posts' => $reservation->posts]);
 
 
 }
@@ -113,7 +113,6 @@ class ReservationController extends Controller
 
             $oldReservation = Session::get('reservation');
             $reservation = new Reservation($oldReservation);
-
             $order = new Order();
             $order->orders_reservation = serialize($reservation);
             $order->orders_buyer_name = $request->input('o_name');

@@ -11,7 +11,7 @@ use App\Lands;
 use App\Reservation;
 use App\userProfiles;
 use App\Order;
-
+use Gate;
 
 class MyAccountController extends Controller
 {
@@ -182,7 +182,9 @@ class MyAccountController extends Controller
 //////////////// my orders naaaa ///////////////////////////
 public function myOrders()
 {
-
+    if(!Gate::allows('isBuyer')){
+        abort(404, 'Sorry, the page you are looking for could not be found');
+    }
     $orders = Auth::user()->orders;
     $orders->transform(function($order, $key){
         $order->orders_reservation = unserialize($order->orders_reservation);
