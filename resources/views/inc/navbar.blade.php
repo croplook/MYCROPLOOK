@@ -44,14 +44,14 @@
                         </li>
                     @endif
                 @else
-
+                @can('isBuyer')
                 <a class="nav-link"  href="{{route('reservation.reservationCart')}}">
                 <span class="badge bg-light text-black-50">
                     {{Session::has('reservation') ? Session::get('reservation')->totalQty : ''}}
                    </span><i class="fa fa-shopping-basket" aria-hidden="true"></i>
                 My Reservations<span class="caret"></span>
                 </a>
-
+                @endcan
                 <ul class="nav-item dropdown  navbar-left">
                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="" role="button"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

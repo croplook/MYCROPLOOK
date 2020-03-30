@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Post;
 use App\Charts\productsChart;
 use App\Reservation;
+use App\postsUP;
+use App\farmProducts;
 use Session;
 use DB;
 
@@ -123,7 +125,18 @@ class ExploreProductsController extends Controller
     {
         //
         $post = Post::find($id);
-        return view('explore-products.view-product')->with('post', $post);
+        $farm = postsUP::find($id);
+        $product_user_id = $farm->id;
+        $all_crop_name = $post->crop_name;
+        $farm_products = farmProducts::where('id', $product_user_id)->get()->take(3);
+
+        $allPosts = PostsUP::where('crop_name', $all_crop_name)->get()->take(4);
+        return view('explore-products.view-product')
+        ->with('post', $post)
+        ->with('farm', $farm)
+        ->with('allPosts', $allPosts)
+        ->with('farm_products', $farm_products);
+
     }
 
     /**

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Lands;
+use App\Post;
 use App\farmProfile;
 use App\PostandFarmer;
 use App\farmProducts;
@@ -24,12 +25,14 @@ class ExploreFarmsController extends Controller
     public function show($land_id)
     {
 
-
         $farm = farmProfile::find($land_id);
+        $allFarms = farmProfile::all()->take(4);
         $product_user_id = $farm->user_id;
-        $farm_products = farmProducts::where('id', $product_user_id)->get();
+        
+        $farm_products = farmProducts::where('id', $product_user_id)->paginate(8);
         return view('explore-farms.view-farmer')
         ->with('farm', $farm)
+        ->with('allFarms', $allFarms)
         ->with('farm_products', $farm_products);
 
     }

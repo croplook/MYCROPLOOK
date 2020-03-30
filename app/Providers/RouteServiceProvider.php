@@ -25,7 +25,7 @@ class RouteServiceProvider extends ServiceProvider
     public const ADMIN = '/users/adminprofile';
     public const FARMER = '/users/farmerprofile';
      */
-    public const HOME = '/dashboard';
+    public const HOME = '/users/user-profile';
     /**
      * Define your route model bindings, pattern filters, etc.
      *

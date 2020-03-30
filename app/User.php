@@ -80,4 +80,7 @@ public function farmerChart(){
 public function farmerTotalQty(){
     return $this->hasMany('App\farmerTotalQty');
 }
+public function postsUP(){
+    return $this->hasMany('App\postUP');
+}
 }
