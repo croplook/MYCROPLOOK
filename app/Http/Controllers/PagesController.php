@@ -113,10 +113,7 @@ class PagesController extends Controller
         ->with('salesChart', $salesChart)
         ->with('allPosts', $totalQty);
     }
-    public function admin(){
-        $title = "Admin Dashboard";
-        return view('pages.admin')->with('title', $title);
-    }
+
     public function products(){
         $data = array(
 

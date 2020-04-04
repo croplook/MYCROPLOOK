@@ -83,4 +83,7 @@ public function farmerTotalQty(){
 public function postsUP(){
     return $this->hasMany('App\postUP');
 }
+public function Profile(){
+    return $this->hasMany('App\Profile');
+}
 }

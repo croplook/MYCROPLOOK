@@ -24,6 +24,8 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
-        "ckeditor4": "github:ckeditor/ckeditor4-releases#full/latest"
+        "ckeditor4": "github:ckeditor/ckeditor4-releases#full/latest",
+        "laravel-echo": "^1.7.0",
+        "pusher-js": "^5.1.1"
     }
 }

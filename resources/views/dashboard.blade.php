@@ -29,7 +29,8 @@
                         <div class="card-body">
                             <h6 class="mb0">{{$post->crop_name}}</h6>
                             <p class="card-text">
-                                Harvest Period: {{$post->crop_harvestPeriod}}
+                                Harvest Period: {{$post->startHarvestMonth}} {{$post->startHarvestDay}} {{$post->startHarvestYear}} -
+                                                {{$post->endHarvestMonth}} {{$post->endHarvestDay}} {{$post->endHarvestYear}}
                             </p>
                             <style type="text/css">
                                 .progress{

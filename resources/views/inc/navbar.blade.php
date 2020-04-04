@@ -52,6 +52,10 @@
                 My Reservations<span class="caret"></span>
                 </a>
                 @endcan
+                <a class="nav-link"  href="{{route('user.chat')}}">
+                    <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                    Messages
+                    </a>
                 <ul class="nav-item dropdown  navbar-left">
                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="" role="button"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -62,6 +66,9 @@
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                     @can('isFarmer')
                     <li><a class="dropdown-item" href="/dashboard" >Dashboard</a> </li>
+                    @endcan
+                    @can('isAdmin')
+                    <li><a class="dropdown-item" href="/admin" >Admin Panel</a> </li>
                     @endcan
                     <li><a class="dropdown-item" href="{{ route('myaccount') }}"  >My Account</a> </li>
                     @can('isBuyer')

@@ -82,13 +82,29 @@ Route::get('/explore-farms/view-farmer/', ['uses' => 'ExploreFarmsController@vie
 
 // product statistics
 Route::get('/users/prod-statistics/', ['uses' => 'DashboardController@prodStat', 'as' => 'users.prod-stat']);
-
+//ordersconfirmation
 Route::get('/users/orders-confirmation/', ['uses' => 'DashboardController@getOrdersConfirmation', 'as' => 'users.orders-confirmation']);
 
+// invoice
+Route::get('/users/{orders_id}/user-invoice', ['uses' => 'MyAccountController@getUserInvoice', 'as' => 'user.invoice']);
+
+// messages
+Route::get('/chat', ['uses' => 'MyAccountController@messages', 'as' => 'user.chat']);
+
+
+//chat-app
+Route::get('/contacts', 'ContactsController@get');
+
+Route::get('/contacts', 'ContactsController@get');
+Route::get('/conversation/{id}', 'ContactsController@getMessagesFor');
+Route::post('/conversation/send', 'ContactsController@send');
+
+
+// admin page
+Route::resource('/admin', 'AdminController');
 
 
 Route::get('/', 'PagesController@index');
-Route::get('/admin', 'PagesController@admin');
 Route::get('/products', 'PagesController@products');
 Route::get('/homepage', 'PagesController@homepage');
 

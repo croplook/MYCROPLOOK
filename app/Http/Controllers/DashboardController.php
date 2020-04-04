@@ -53,7 +53,7 @@ public function getOrdersConfirmation()
         $order->orders_reservation = unserialize($order->orders_reservation);
         return $order;
     });
-    //$order = Order::where($order->orders_reservation->posts['item']['user_id'],  $current_user_id)->get();
+    // $buyersinfo = Order::where($order->orders_reservation->posts['item']['user_id'],  $current_user_id)->get();
 
     $current_user_id = auth()->user()->id;
     $user_profile = userProfiles::where('user_id', $current_user_id)->get();

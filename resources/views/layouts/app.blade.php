@@ -62,6 +62,9 @@
 <link rel="stylesheet" href="/static/plugins/lightgallery/css/lightgallery.min.css">
 
 {{-- /* end css view product */ --}}
+
+
+
 </head>
 <body>
     <div id="app">

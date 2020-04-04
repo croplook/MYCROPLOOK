@@ -68,7 +68,7 @@
                                 <div class="box-body">
                                     <div class="form-row">
 
-                                        <div class="col-12 col-sm-6">
+                                        <div class="col-12 col-sm-4">
 
                                             <div class="form-group">
 
@@ -79,7 +79,14 @@
 
                                             </div>
                                         </div>
-                                        <div class="col-12 col-sm-6">
+                                        <div class="col-12 col-sm-4">
+                                            <div class="form-group">
+                                                {{Form::label('startHarvestDay','Start of Harvest - Day')}}
+                                                {{Form::select('startHarvestDay', $days,
+                                                null, ['class' => 'form-control', 'placeholder' => 'Select Day']) }}
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-4">
                                             <div class="form-group">
                                                 {{Form::label('startHarvestYear','Start of Harvest - Year')}}
                                                 {{Form::select('startHarvestYear', array('2021' => '2021', '2022' => '2022',
@@ -87,7 +94,7 @@
                                                 null, ['class' => 'form-control', 'placeholder' => 'Select Year'])}}
                                             </div>
                                         </div>
-                                        <div class="col-12 col-sm-6">
+                                        <div class="col-12 col-sm-4">
                                             <div class="form-group">
                                                 {{Form::label('endHarvestMonth','End of Harvest - Month')}}
                                                 {{Form::select('endHarvestMonth', array('Jan' => 'January', 'Feb' => 'February', 'Mar' => 'March', 'Apr' => 'April', 'May' => 'May',
@@ -96,7 +103,14 @@
 
                                             </div>
                                         </div>
-                                        <div class="col-12 col-sm-6">
+                                        <div class="col-12 col-sm-4">
+                                            <div class="form-group">
+                                                {{Form::label('endHarvestDay','End of Harvest - Day')}}
+                                                {{Form::select('endHarvestDay', $days,
+                                                null, ['class' => 'form-control', 'placeholder' => 'Select Day']) }}
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-4">
                                             <div class="form-group">
                                                 {{Form::label('endHarvestYear','End of Harvest - Year')}}
                                                 {{Form::select('endHarvestYear', array('2021' => '2021', '2022' => '2022',

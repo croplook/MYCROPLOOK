@@ -50,7 +50,11 @@ class ExploreProductsController extends Controller
     public function create()
     {
         if(Auth::check()){
-        return view('explore-products.create');
+
+            $days = [];
+            for ($day=1; $day <= 31; $day++) $days[$day] = $day;
+
+        return view('explore-products.create')->with('days', $days);
         }else
         return redirect('/login')->with('error', 'Log in First!');
     }
@@ -74,6 +78,8 @@ class ExploreProductsController extends Controller
             'startHarvestYear' => 'required',
             'endHarvestMonth' => 'required',
             'endHarvestYear' => 'required',
+            'startHarvestDay' => 'required',
+            'endHarvestDay' => 'required',
             'cropImage' => 'Image|nullable'
 
         ]);
@@ -106,6 +112,8 @@ class ExploreProductsController extends Controller
         $post->startHarvestYear = $request->input('startHarvestYear');
         $post->endHarvestMonth = $request->input('endHarvestMonth');
         $post->endHarvestYear = $request->input('endHarvestYear');
+        $post->startHarvestDay = $request->input('startHarvestDay');
+        $post->endHarvestDay = $request->input('endHarvestDay');
         $post->user_id =auth()->user()->id;
         $post->crop_image = $filenameToStore;
 
@@ -160,7 +168,11 @@ class ExploreProductsController extends Controller
             return redirect('explore-products')->with('error', 'Unauthorized Page');
 
             }else
-        return view('explore-products.edit')->with('post', $post);
+            $days = [];
+            for ($day=1; $day <= 31; $day++) $days[$day] = $day;
+        return view('explore-products.edit')
+        ->with('days', $days)
+        ->with('post', $post);
 
 
 
@@ -202,6 +214,8 @@ class ExploreProductsController extends Controller
             'startHarvestYear' => 'required',
             'endHarvestMonth' => 'required',
             'endHarvestYear' => 'required',
+            'startHarvestDay' => 'required',
+            'endHarvestDay' => 'required',
             'cropImage' => 'Image|nullable'
 
         ]);
@@ -215,6 +229,8 @@ class ExploreProductsController extends Controller
         $post->startHarvestYear = $request->input('startHarvestYear');
         $post->endHarvestMonth = $request->input('endHarvestMonth');
         $post->endHarvestYear = $request->input('endHarvestYear');
+        $post->startHarvestDay = $request->input('startHarvestDay');
+        $post->endHarvestDay = $request->input('endHarvestDay');
         $post->user_id =auth()->user()->id;
         if($request->hasFile('cropImage')){
             $post->crop_image = $filenameToStore;

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\userProfile;
 use App\Post;
+use App\postsUP;
 use App\User;
 use App\Lands;
 use App\Reservation;
@@ -190,15 +191,41 @@ public function myOrders()
         $order->orders_reservation = unserialize($order->orders_reservation);
         return $order;
     });
-    //dd($orders);
     $current_user_id = auth()->user()->id;
+    $fs_info = postsUP::groupBy('id')->get();
     $user_profile = userProfiles::where('user_id', $current_user_id)->get();
     return view('users.my-orders', ['orders'=> $orders])
+    ->with('farmers_info', $fs_info)
     ->with('user_profile', $user_profile);
 
 }
 
+public function getUserInvoice($orders_id)
+{
+    if(!Gate::allows('isBuyer')){
+        abort(404, 'Sorry, the page you are looking for could not be found');
+    }
 
+    $postInfo = Post::find($orders_id);
+    $postId = $postInfo->id;
+    $farmerInfo = postsUP::where('user_id', $postInfo->user_id)->groupBy('id')->get();
+    $orders = Auth::user()->orders;
+    $orders->transform(function($order, $key){
+        $order->orders_reservation = unserialize($order->orders_reservation);
+        return $order;
+    });
+    $current_user_id = auth()->user()->id;
+    $fs_info = postsUP::groupBy('id')->get();
+    $user_profile = userProfiles::where('user_id', $current_user_id)->get();
+    return view('users.user-invoice', ['orders'=> $orders])
+    ->with('farmerInfo', $farmerInfo)
+    ->with('postInfo', $postInfo)
+    ->with('postId', $postId)
+    ->with('user_profile', $user_profile);
+}
+public function messages(){
+    return view('/chat');
+}
 
     /**
      * Remove the specified resource from storage.
