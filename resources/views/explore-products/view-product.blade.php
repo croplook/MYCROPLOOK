@@ -253,7 +253,7 @@
                             </span></div>
                             <div class="col-4 pl0 align-right">
                                 <a href="#" class="read-more read-more-arrow-sm hydrated  mr0">
-                                    
+
                                     See All<i  class="fa fa-chevron-right" aria-hidden="true"></i>
                                 </a>
                             </div>

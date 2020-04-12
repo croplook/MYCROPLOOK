@@ -1,14 +1,16 @@
 <template>
     <div class="contacts-list">
         <ul>
+
             <li v-for="contact in sortedContacts" :key="contact.id" @click="selectContact(contact)" :class="{ 'selected': contact == selected }">
                 <div class="avatar">
+                    <img v-bind:src="'/storage/uploads/userImage/' + contact.user_image" :alt="contact.name">
                 </div>
                 <div class="contact">
                     <p class="name">{{ contact.name }}</p>
                     <p class="email">{{ contact.email }}</p>
                 </div>
-                <span class="unread" v-if="contact.unread">{{ contact.unread }}</span>
+                <span class="unread" v-show="contact.unread"> {{ contact.unread }}</span>
             </li>
         </ul>
     </div>
@@ -39,6 +41,7 @@
                 return _.sortBy(this.contacts, [(contact) => {
                     if (contact == this.selected) {
                         return Infinity;
+                    return contact.unread;
                     }
 
                     return contact.unread;

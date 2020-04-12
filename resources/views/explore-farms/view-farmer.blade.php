@@ -3,11 +3,11 @@
 @section('content')
 
 <section class="body-content">
-    
+
     <div class="container pb20">
         <div class="mb20 farm-container">
             <img class="col-12 mlr0 mt15" style="display:block; width:100%; height: 400px;" src="/storage/uploads/landImage/{{$farm->land_image}}">
-                
+
             </div>
             <div class="row mlr0 mt15" style="padding-left: 40px;">
                 <div class="col-12 col-lg-8">
@@ -73,7 +73,7 @@
                             Strictly no cancellation permitted when harvest period begins.
                         </div>
                     </div>
-                   
+
                 </div>
                 <div class="col-12 col-lg-4">
                     <div>
@@ -103,7 +103,7 @@
                                 </ul>
                             </div> --}}
                             <div class="pr0">
-                                <button class="btn-main-solid btn-farm-size">SEND MESSAGE<i class="fa fa-paper-plane icon-send"  aria-hidden="true"></i></button>
+                            <a href="/conversation/{{$farm->user_id}}" class="btn-main-solid btn-farm-size">SEND MESSAGE<i class="fa fa-paper-plane icon-send"  aria-hidden="true"></i></a>
                             </div>
                         </div>
                     </div>
@@ -114,7 +114,7 @@
                             </div>
                         </div> --}}
                         {{-- <div class="row mr0">
-                            
+
                             <div class="col-6 pr0 mt20 products-similar">
                                 <div class="form-row">
                                     <div class="col-12">
@@ -134,7 +134,7 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div class="col-6 pr0 mt20 products-similar">
                                 <div class="form-row">
                                     <div class="col-12">
@@ -154,7 +154,7 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div class="col-6 pr0 mt20 products-similar">
                                 <div class="form-row">
                                     <div class="col-12">
@@ -174,7 +174,7 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div class="col-6 pr0 mt20 products-similar">
                                 <div class="form-row">
                                     <div class="col-12">
@@ -194,7 +194,7 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                         </div> --}}
                         {{-- <div class="row mt10">
                             <div class="col-12 align-right">
@@ -229,7 +229,7 @@
                 </div> --}}
             </div>
             <div class="row info-text">
-                
+
             @foreach($farm_products as $farmproduct)
                 <div class="col-12 col-sm-4 col-md-6 col-lg-4 col-xl-3 mt10 mb15 products-similar">
                     <div class="row">
@@ -278,14 +278,14 @@
                     </div>
                 </div>
             @endforeach
-                
-                
+
+
             </div>
             {{$farm_products->links()}}
             <div class="row mtb20 info-text title-md pt20" >
                 <div class="col-12">
                     <h5> Related Growers <a href="/explore-farms" class="read-more pull-right">
-                                    
+
                         See All<i  class="fa fa-chevron-right" aria-hidden="true"></i>
                     </a></h5>
                     <div class="row">
@@ -347,14 +347,14 @@
                             </div>
                         </div>
                         @endforeach
-                        
+
                     </div>
                 </div>
             </div>
         </div>
-    
+
     </div>
-    
+
     </section>
-    
+
     @endsection

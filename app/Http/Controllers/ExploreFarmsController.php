@@ -28,7 +28,7 @@ class ExploreFarmsController extends Controller
         $farm = farmProfile::find($land_id);
         $allFarms = farmProfile::all()->take(4);
         $product_user_id = $farm->user_id;
-        
+
         $farm_products = farmProducts::where('id', $product_user_id)->paginate(8);
         return view('explore-farms.view-farmer')
         ->with('farm', $farm)

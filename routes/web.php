@@ -1,5 +1,6 @@
 <?php
 
+use Carbon\Carbon;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -101,7 +102,26 @@ Route::post('/conversation/send', 'ContactsController@send');
 
 
 // admin page
-Route::resource('/admin', 'AdminController');
+Route::get('/admin', 'AdminController@index');
+
+Route::get('/admin/crop-lists','AdminController@getCropLists');
+Route::get('/admin/banners', 'AdminController@getBanners');
+Route::get('/admin/statistics', ['uses' => 'AdminController@getStatistics', 'as' => 'admin.statistics']);
+Route::get('/admin/seasonal-crops', ['uses' => 'AdminController@getSeasonalCrops', 'as' => 'admin.seasonal-crops']);
+Route::get('/admin/confirm-users', ['uses' => 'AdminController@getConfirmUsers', 'as' => 'admin.confirm-users']);
+Route::get('/admin/admin-users', ['uses' => 'AdminController@getAdminUsers', 'as' => 'admin.admin-users']);
+
+
+
+// time using carbon
+Route::get('/time', function(){
+
+    $dt =  new Carbon();
+    $dt->timezone('GMT+8');
+    echo $dt->today();
+
+});
+
 
 
 Route::get('/', 'PagesController@index');

@@ -2009,6 +2009,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     contacts: {
@@ -2034,6 +2036,7 @@ __webpack_require__.r(__webpack_exports__);
       return _.sortBy(this.contacts, [function (contact) {
         if (contact == _this.selected) {
           return Infinity;
+          return contact.unread;
         }
 
         return contact.unread;
@@ -8774,7 +8777,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".feed[data-v-4b6ab3f5] {\n  background: #f0f0f0;\n  height: 100%;\n  max-height: 470px;\n  overflow: scroll;\n}\n.feed ul[data-v-4b6ab3f5] {\n  list-style-type: none;\n  padding: 5px;\n}\n.feed ul li.message[data-v-4b6ab3f5] {\n  margin: 10px 0;\n  width: 100%;\n}\n.feed ul li.message .text[data-v-4b6ab3f5] {\n  max-width: 200px;\n  border-radius: 5px;\n  padding: 12px;\n  display: inline-block;\n}\n.feed ul li.message.received[data-v-4b6ab3f5] {\n  text-align: right;\n}\n.feed ul li.message.received .text[data-v-4b6ab3f5] {\n  background: #b2b2b2;\n}\n.feed ul li.message.sent[data-v-4b6ab3f5] {\n  text-align: left;\n}\n.feed ul li.message.sent .text[data-v-4b6ab3f5] {\n  background: #81c4f9;\n}", ""]);
+exports.push([module.i, ".feed[data-v-4b6ab3f5] {\n  background: #f0f0f0;\n  height: 100%;\n  max-height: 470px;\n  overflow: scroll;\n}\n.feed ul[data-v-4b6ab3f5] {\n  list-style-type: none;\n  padding: 5px;\n}\n.feed ul li.message[data-v-4b6ab3f5] {\n  margin: 10px 0;\n  width: 100%;\n}\n.feed ul li.message .text[data-v-4b6ab3f5] {\n  max-width: 200px;\n  border-radius: 5px;\n  padding: 12px;\n  display: inline-block;\n}\n.feed ul li.message.received[data-v-4b6ab3f5] {\n  text-align: right;\n}\n.feed ul li.message.received .text[data-v-4b6ab3f5] {\n  background: #d6d4d4;\n}\n.feed ul li.message.sent[data-v-4b6ab3f5] {\n  text-align: left;\n}\n.feed ul li.message.sent .text[data-v-4b6ab3f5] {\n  color: white;\n  background: #6fc529;\n}", ""]);
 
 // exports
 
@@ -47942,7 +47945,14 @@ var render = function() {
             }
           },
           [
-            _c("div", { staticClass: "avatar" }),
+            _c("div", { staticClass: "avatar" }, [
+              _c("img", {
+                attrs: {
+                  src: "/storage/uploads/userImage/" + contact.user_image,
+                  alt: contact.name
+                }
+              })
+            ]),
             _vm._v(" "),
             _c("div", { staticClass: "contact" }, [
               _c("p", { staticClass: "name" }, [_vm._v(_vm._s(contact.name))]),
@@ -47950,11 +47960,21 @@ var render = function() {
               _c("p", { staticClass: "email" }, [_vm._v(_vm._s(contact.email))])
             ]),
             _vm._v(" "),
-            contact.unread
-              ? _c("span", { staticClass: "unread" }, [
-                  _vm._v(_vm._s(contact.unread))
-                ])
-              : _vm._e()
+            _c(
+              "span",
+              {
+                directives: [
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value: contact.unread,
+                    expression: "contact.unread"
+                  }
+                ],
+                staticClass: "unread"
+              },
+              [_vm._v(" " + _vm._s(contact.unread))]
+            )
           ]
         )
       }),

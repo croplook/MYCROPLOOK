@@ -10,6 +10,7 @@ use App\Reservation;
 use App\postsUP;
 use App\farmProducts;
 use Session;
+use Carbon\Carbon;
 use DB;
 
 class ExploreProductsController extends Controller
@@ -137,6 +138,7 @@ class ExploreProductsController extends Controller
         $product_user_id = $farm->id;
         $all_crop_name = $post->crop_name;
         $farm_products = farmProducts::where('id', $product_user_id)->get()->take(3);
+
 
         $allPosts = PostsUP::where('crop_name', $all_crop_name)->get()->take(4);
         return view('explore-products.view-product')

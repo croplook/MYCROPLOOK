@@ -30,7 +30,11 @@
 
               <span><strong> {{$post['item']['crop_name']}}</strong></span><br>
               <span> Crop Price: ₱ {{$post['item']['crop_price']}} /kg</span><br>
-              <span> Quantity Ordered: {{$post['qty']}} kg</span><br><hr>
+              <span> Quantity Ordered: {{$post['qty']}} kg</span><br>
+              <span><strong style="color: red"> Harvest Period: {{$post['item']['startHarvestMonth']}}.
+                {{$post['item']['startHarvestDay']}} {{$post['item']['startHarvestYear']}} -
+                {{$post['item']['endHarvestMonth']}}. {{$post['item']['endHarvestDay']}} {{$post['item']['startHarvestYear']}}
+            </strong></span><br><hr>
               <span> Total price: ₱ {{$post['price']}} </span><br>
               <hr>
               @foreach ($farmers_info as $farmer_info)

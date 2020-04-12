@@ -66,7 +66,7 @@
                     text-align: right;
 
                     .text {
-                        background: #b2b2b2;
+                        background: #d6d4d4;
                     }
                 }
 
@@ -74,7 +74,8 @@
                     text-align: left;
 
                     .text {
-                        background: #81c4f9;
+                        color: white;
+                        background: #6fc529;
                     }
                 }
             }

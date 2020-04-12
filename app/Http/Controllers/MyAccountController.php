@@ -97,7 +97,12 @@ class MyAccountController extends Controller
                 $user_profile->user_id =auth()->user()->id;
                 $user_profile->user_image = $filenameToStore;
 
+                $user_image = User::auth()->user()->id;
+                $user_image->user_image = $filenameToStore;
+                $user_image->save();
+
                 $user_profile->save();
+
 
                 return redirect('explore-products')->with('success', 'User Profile Created!');
 
@@ -161,6 +166,7 @@ class MyAccountController extends Controller
 
             //update user
                 $user_profile = userProfiles::find($user_profile_id);
+                $user_image = User::auth()->user()->id;
                 $user_profile->first_name = $request->input('firstName');
                 $user_profile->middle_name = $request->input('middleName');
                 $user_profile->last_name = $request->input('lastName');
@@ -172,7 +178,10 @@ class MyAccountController extends Controller
                 $user_profile->user_id = auth()->user()->id;
                 if($request->hasFile('userImage')){
                 $user_profile->user_image = $filenameToStore;
+                $user_image->user_image = $filenameToStore;
                 }
+
+                $user_image->save();
                 $user_profile->save();
 
             return redirect('explore-products')->with('success', 'User Profile Updated!');

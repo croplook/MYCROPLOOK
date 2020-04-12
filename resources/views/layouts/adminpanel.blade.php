@@ -65,20 +65,19 @@
     {{-- /* end css view product */ --}}
     </head>
 
-<body style=" overflow-x: hidden;">
+    <body>
     <!--////////////////TOP NAVBAR FIXED NAVBAR////////////////-->
-    <div class="main-container">
+    <div id="adminpanel">
 
 
-
-        <section id="content_body">
-        <div class="container">
-                @include('inc.adminsidebar')
+        <main class="">
+            <div>
+            @include('inc.adminsidebar')
               @yield('content')
-            </div>
-        </section>
 
-    </div>
+            </div>
+        </main>
+
 
 </body>
 </html>
