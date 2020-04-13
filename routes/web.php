@@ -111,6 +111,10 @@ Route::get('/admin/seasonal-crops', ['uses' => 'AdminController@getSeasonalCrops
 Route::get('/admin/confirm-users', ['uses' => 'AdminController@getConfirmUsers', 'as' => 'admin.confirm-users']);
 Route::get('/admin/admin-users', ['uses' => 'AdminController@getAdminUsers', 'as' => 'admin.admin-users']);
 
+Route::post('/reservation/crop-lists',
+['uses' => 'AdminController@storeCrop',
+'middleware' => 'auth']);
+
 
 
 // time using carbon
@@ -131,7 +135,7 @@ Route::get('/homepage', 'PagesController@homepage');
 Route::resource('/explore-products', 'ExploreProductsController');
 Route::resource('/explore-farms', 'ExploreFarmsController');
 Route::resource('/users', 'MyAccountController');
-
+Route::resource('/admin', 'AdminController');
 Auth::routes();
 
 

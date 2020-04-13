@@ -86,4 +86,7 @@ public function postsUP(){
 public function Profile(){
     return $this->hasMany('App\Profile');
 }
+public function CropList(){
+    return $this->hasMany('App\CropList');
+}
 }

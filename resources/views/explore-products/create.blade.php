@@ -18,10 +18,7 @@
                                         <div class="col-12">
                                             <div class="form-group">
                                                 {{Form::label('cropName','Crop Name')}}
-                                                {{Form::select('cropName', array('Carrots' => 'Carrots', 'Potatoes' => 'Potatoes','Coffee' => 'Coffee', 'Corn' => 'Corn',
-                                                'String Beans' => 'String Beans', 'Chinese Pechay' => 'Chinese Pechay', 'Banana' => 'Banana', 'Okra/Ladys Finger' => 'Okra/Ladys Finger'
-                                                , 'Cabbage' => 'Cabbage', 'Raddish' => 'Raddish', 'Bell Pepper' => 'Bell Pepper', 'Squash' => 'Squash', 'Sayote/Chayote' => 'Sayote/Chayote', 'Ampalaya/Bitter Gourd' => 'Ampalaya/Bitter Gourd'
-                                                , 'Eggplant' => 'Eggplant', 'Tomatoes' => 'Tomatoes', 'Onion' => 'Onion', 'Garlic' => 'Garlic'),
+                                                {{Form::select('cropName', $crops,
                                                 null, ['class' => 'form-control', 'placeholder' => ''])}}
                                             </div>
                                             <div class="form-group">

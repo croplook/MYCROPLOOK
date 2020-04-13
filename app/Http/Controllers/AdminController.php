@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Gate;
 use App\Post;
 use App\User;
+use App\CropList;
 
 class AdminController extends Controller
 {
@@ -51,9 +52,21 @@ public function create()
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function storeCrop(Request $request)
     {
         //
+        $this->validate($request, [
+            'crop_name' => 'required|unique:croplist'
+
+        ]);
+
+        //create post
+        $crop = new CropList;
+        $crop->crop_name = $request->input('crop_name');
+        $crop->save();
+
+        return redirect('/admin/crop-lists')->with('success', 'Crop Created');
+
     }
 
     /**
@@ -98,19 +111,19 @@ public function create()
      */
     public function destroy($id)
     {
-        //
+        $crop =  CropList::find($id);
+        $crop->delete();
+        return redirect('/admin/crop-lists')->with('success', 'Crop Removed');
     }
     public function getCropLists(){
         if(!Gate::allows('isAdmin')){
         abort(404, 'Sorry, the page you are looking for could not be found');
     }
-        $user_id = auth()->user()->id;
-        $user = User::find($user_id);
-        $allPosts = Post::all();
+
+        $crops = CropList::all();
 
         return view('admin.crop-lists')
-    ->with('allPosts', $allPosts)
-    ->with('posts', $user->posts);
+                ->with('crops', $crops);
     }
     public function getBanners(){
         if(!Gate::allows('isAdmin')){

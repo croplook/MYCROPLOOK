@@ -9,6 +9,7 @@ use App\Charts\productsChart;
 use App\Reservation;
 use App\postsUP;
 use App\farmProducts;
+use App\CropList;
 use Session;
 use Carbon\Carbon;
 use DB;
@@ -51,11 +52,13 @@ class ExploreProductsController extends Controller
     public function create()
     {
         if(Auth::check()){
-
+            $crops = CropList::pluck('crop_name', 'crop_name');
             $days = [];
             for ($day=1; $day <= 31; $day++) $days[$day] = $day;
 
-        return view('explore-products.create')->with('days', $days);
+        return view('explore-products.create')
+        ->with('crops', $crops)
+        ->with('days', $days);
         }else
         return redirect('/login')->with('error', 'Log in First!');
     }
@@ -165,7 +168,7 @@ class ExploreProductsController extends Controller
         }
             else
 
-
+        $crops = CropList::pluck('crop_name', 'crop_name');
         if(auth()->user()->id !==$post->user_id){
             return redirect('explore-products')->with('error', 'Unauthorized Page');
 
@@ -173,6 +176,7 @@ class ExploreProductsController extends Controller
             $days = [];
             for ($day=1; $day <= 31; $day++) $days[$day] = $day;
         return view('explore-products.edit')
+        ->with('crops', $crops)
         ->with('days', $days)
         ->with('post', $post);
 

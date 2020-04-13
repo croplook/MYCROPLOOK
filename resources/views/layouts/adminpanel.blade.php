@@ -73,6 +73,9 @@
         <main class="">
             <div>
             @include('inc.adminsidebar')
+            <div style="padding-left: 260px">
+                @include('inc.messages')
+            </div>
               @yield('content')
 
             </div>
