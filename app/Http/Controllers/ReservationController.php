@@ -103,6 +103,55 @@ class ReservationController extends Controller
 
 
 }
+private static function smsgateway($phone, $message) {
+
+
+    $array_fields['phone_number'] = $phone;
+
+    $array_fields['message'] = $message;
+
+    $array_fields['device_id'] = 116705;
+
+    //$array_fields['device_id'] = 110460;
+
+    $token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhZG1pbiIsImlhdCI6MTU4Njg4ODI5MiwiZXhwIjo0MTAyNDQ0ODAwLCJ1aWQiOjc5MzUxLCJyb2xlcyI6WyJST0xFX1VTRVIiXX0.39zv2kxgafe6MjVor4UA-gjKYa8G_KihJTIxZOeiess";
+
+//       $token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhZG1pbiIsImlhdCI6MTU1MzY3OTM1MSwiZXhwIjo0MTAyNDQ0ODAwLCJ1aWQiOjY5NTM0LCJyb2xlcyI6WyJST0xFX1VTRVIiXX0.jVJXqJFhLuAXP3Jgc4kIz1jteChBcgvVdORKK3mn9IQ";
+
+    //$token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhZG1pbiIsImlhdCI6MTU1Mzk2MTYzNywiZXhwIjo0MTAyNDQ0ODAwLCJ1aWQiOjYwOTQwLCJyb2xlcyI6WyJST0xFX1VTRVIiXX0.Ci7Pt7jTerxqDco_9UcQFOfGmRYr3N4-gwXC-oIJPDc";
+
+
+    $curl = curl_init();
+
+    curl_setopt_array($curl, array(
+        CURLOPT_URL => "https://smsgateway.me/api/v4/message/send",
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => "",
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 30,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => "POST",
+        CURLOPT_POSTFIELDS => "[  " . json_encode($array_fields) . "]",
+        CURLOPT_HTTPHEADER => array(
+            "authorization: $token",
+            "cache-control: no-cache"
+        ),
+    ));
+    curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+
+    $response = curl_exec($curl);
+    $err = curl_error($curl);
+
+    curl_close($curl);
+
+//        if ($err) {
+//            echo "cURL Error #:" . $err;
+//        } else {
+//            echo $response;
+//        }
+
+
+}
     public function postCheckout(Request $request){
             if (!Session::has('reservation')){
                 return view('reservation.my-reservations');
@@ -160,6 +209,7 @@ class ReservationController extends Controller
             //pag minus sa quantity sa crops pag mag purchase
             //$this->decreaseQuantities();
 
+            ReservationController::smsgateway($request->input('o_mobile_no'),"You have Successfully Purchased a product.");
 
             Session::forget('reservation');
             return redirect()->route('explore-products.index')->with('success', 'Successfully Purchased Crops!');
