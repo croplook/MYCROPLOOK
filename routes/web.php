@@ -98,6 +98,7 @@ Route::get('/contacts', 'ContactsController@get');
 
 Route::get('/contacts', 'ContactsController@get');
 Route::get('/conversation/{id}', 'ContactsController@getMessagesFor');
+//Route::get('/conversation/{id}',  ['uses' => 'ContactsController@getMessagesForF', 'as' => 'individual.chat']);
 Route::post('/conversation/send', 'ContactsController@send');
 
 

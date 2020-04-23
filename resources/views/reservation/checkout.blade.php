@@ -68,7 +68,8 @@
         <div class="col-md-12">
             <div class="form-group">
                 <label for="name">Your Contact Number:</label>
-                <input type="text" id="o_mobile_no" name="o_mobile_no" class="form-control" required>
+                <input type="text" id="o_mobile_no" name="o_mobile_no" class="form-control" value="+63" required>
+                <small>* Please use +63</small>
             </div>
         </div>
     </div>

@@ -10,7 +10,7 @@
                     <p class="name">{{ contact.name }}</p>
                     <p class="email">{{ contact.email }}</p>
                 </div>
-                <span class="unread" v-show="contact.unread"> {{ contact.unread }}</span>
+                <span class="unread" v-if="contact.unread"> {{ contact.unread }}</span>
             </li>
         </ul>
     </div>

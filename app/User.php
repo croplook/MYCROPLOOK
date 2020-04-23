@@ -89,4 +89,7 @@ public function Profile(){
 public function CropList(){
     return $this->hasMany('App\CropList');
 }
+public function individual_orders(){
+    return $this->hasMany('App\IndividualOrder');
+}
 }

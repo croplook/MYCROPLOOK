@@ -30,6 +30,7 @@
                                                         <div class="col-15">
                                                             {{Form::text('middleName', $current_user->middle_name, ['class' => 'form-control', 'placeholder' => 'Middle Name'])}}
                                                         </div>
+                                                        <small>please use +63</small>
                                                     </div>
                                                     <div class="col-12 col-md-8 mt10 mb30" style="font-size: 14px">
                                                         {{Form::label('lastName','Last Name')}}

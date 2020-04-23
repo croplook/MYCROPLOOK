@@ -9,6 +9,9 @@ use App\Charts\productsChart;
 use App\Reservation;
 use App\postsUP;
 use App\farmProducts;
+use App\Order;
+use App\IndividualOrder;
+use App\userProfiles;
 use App\CropList;
 use Session;
 use Carbon\Carbon;
@@ -192,6 +195,59 @@ class ExploreProductsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+
+
+
+private static function smsgateway($phone, $message) {
+
+
+    $array_fields['phone_number'] = $phone;
+
+    $array_fields['message'] = $message;
+
+    $array_fields['device_id'] = 116705;
+
+    //$array_fields['device_id'] = 110460;
+
+    $token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhZG1pbiIsImlhdCI6MTU4Njg4ODI5MiwiZXhwIjo0MTAyNDQ0ODAwLCJ1aWQiOjc5MzUxLCJyb2xlcyI6WyJST0xFX1VTRVIiXX0.39zv2kxgafe6MjVor4UA-gjKYa8G_KihJTIxZOeiess";
+
+//       $token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhZG1pbiIsImlhdCI6MTU1MzY3OTM1MSwiZXhwIjo0MTAyNDQ0ODAwLCJ1aWQiOjY5NTM0LCJyb2xlcyI6WyJST0xFX1VTRVIiXX0.jVJXqJFhLuAXP3Jgc4kIz1jteChBcgvVdORKK3mn9IQ";
+
+    //$token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhZG1pbiIsImlhdCI6MTU1Mzk2MTYzNywiZXhwIjo0MTAyNDQ0ODAwLCJ1aWQiOjYwOTQwLCJyb2xlcyI6WyJST0xFX1VTRVIiXX0.Ci7Pt7jTerxqDco_9UcQFOfGmRYr3N4-gwXC-oIJPDc";
+
+
+    $curl = curl_init();
+
+    curl_setopt_array($curl, array(
+        CURLOPT_URL => "https://smsgateway.me/api/v4/message/send",
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => "",
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 30,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => "POST",
+        CURLOPT_POSTFIELDS => "[  " . json_encode($array_fields) . "]",
+        CURLOPT_HTTPHEADER => array(
+            "authorization: $token",
+            "cache-control: no-cache"
+        ),
+    ));
+    curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+
+    $response = curl_exec($curl);
+    $err = curl_error($curl);
+
+    curl_close($curl);
+
+//        if ($err) {
+//            echo "cURL Error #:" . $err;
+//        } else {
+//            echo $response;
+//        }
+
+
+}
     public function update(Request $request, $id)
     {
 
@@ -243,7 +299,28 @@ class ExploreProductsController extends Controller
             }
         $post->save();
 
+        $product_sms = IndividualOrder::where('id', $id)->get();
+        foreach($product_sms as $prod_sms){
+        $result = $prod_sms;
+        $crop_stat = $result['crop_status'];
+        $crop_name = $result['crop_name'];
+        $buyer_no = $result['buyer_number'];
 
+
+        $user_id = $result['user_id'];
+        $buyer_sms = userProfiles::where('user_id', $user_id)->get();
+        $result1 = $buyer_sms->first();
+        $number = $result1['mobile_no'];
+        $firstname = $result1['first_name'];
+        $middlename = $result1['middle_name'];
+        $lastname = $result1['last_name'];
+        if($crop_stat == $request->input('cropStatus')){
+        }else{
+            ExploreProductsController::smsgateway($buyer_no, "Hi There, your ordered crop - " . $crop_name . " from " . $firstname . " " . $middlename . " " . $lastname . " is now updated it's status from " . $crop_stat . " to " . $request->input('cropStatus') . ". Thank You! [CROPLOOK SMS NOTIFICATION]");
+        }
+
+
+    }
 
         return redirect('/dashboard')->with('success', 'Post Updated');
 

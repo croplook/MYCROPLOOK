@@ -103,7 +103,7 @@
                                 </ul>
                             </div> --}}
                             <div class="pr0">
-                            <a href="/conversation/{{$farm->user_id}}" class="btn-main-solid btn-farm-size">SEND MESSAGE<i class="fa fa-paper-plane icon-send"  aria-hidden="true"></i></a>
+                            <a href="{{route('user.chat', $farm->user_id)}}" class="btn-main-solid btn-farm-size">SEND MESSAGE<i class="fa fa-paper-plane icon-send"  aria-hidden="true"></i></a>
                             </div>
                         </div>
                     </div>

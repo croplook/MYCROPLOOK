@@ -94,10 +94,10 @@ class MyAccountController extends Controller
                 $user_profile->email_add = $request->input('emailAddress');
                 $user_profile->company = $request->input('company');
                 $user_profile->job_title = $request->input('jobTitle');
-                $user_profile->user_id =auth()->user()->id;
+                $user_profile->user_id = auth()->user()->id;
                 $user_profile->user_image = $filenameToStore;
 
-                $user_image = User::auth()->user()->id;
+                $user_image = User::find(auth()->user()->id);
                 $user_image->user_image = $filenameToStore;
                 $user_image->save();
 
