@@ -10,6 +10,7 @@ use App\cropSalesChart;
 use App\farmerTotalQty;
 use App\farmerChart;
 use App\userProfiles;
+use App\DashboardProfit;
 use App\Order;
 use Charts;
 use Gate;
@@ -40,6 +41,15 @@ class DashboardController extends Controller
         }
         $user_id = auth()->user()->id;
         $user = User::find($user_id);
+        // $posts = $user->posts;
+        // if(count($posts) > 0){
+        //     foreach($posts as $post){
+        //         //crop profitability
+        //         $cp =
+
+
+        //     }
+        // }
 
         return view('dashboard')
         ->with('buyers', $user->BuyersofCrop)
@@ -65,6 +75,9 @@ public function prodStat()
 {
     $user_id = auth()->user()->id;
     $user = User::find($user_id);
+    $profit = DashboardProfit::where('user_id', $user_id)->get();
+
+    //crop profitability ranking
 
     //Crop Availability
     $totalQty = farmerTotalQty::where('user_id', $user_id)
@@ -101,6 +114,7 @@ public function prodStat()
     return view('users/prod-statistics')
     ->with('buyers', $user->BuyersofCrop)
     ->with('chart', $chart)
+    ->with('profits', $profit)
     ->with('posts', $user->posts);
 }
 }

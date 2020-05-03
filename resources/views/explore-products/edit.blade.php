@@ -54,6 +54,14 @@
                             <small>* Estimated yield per unit selected.</small>
                         </div>
                     </div>
+                    <div class="col-12 col-sm-6">
+                        <div class="form-group">
+
+                            {{Form::label('cropProdCost','Production Cost')}}
+                            {{Form::text('cropProdCost', $post->production_cost, ['class' => 'form-control', 'placeholder' => 'Production Cost (in Peso)'])}}
+                            <small>* numbers only, ex. 100000.</small>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

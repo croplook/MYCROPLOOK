@@ -87,6 +87,7 @@ class ExploreProductsController extends Controller
             'endHarvestYear' => 'required',
             'startHarvestDay' => 'required',
             'endHarvestDay' => 'required',
+            'cropProdCost' => 'required',
             'cropImage' => 'Image|nullable'
 
         ]);
@@ -121,6 +122,7 @@ class ExploreProductsController extends Controller
         $post->endHarvestYear = $request->input('endHarvestYear');
         $post->startHarvestDay = $request->input('startHarvestDay');
         $post->endHarvestDay = $request->input('endHarvestDay');
+        $post->endHarvestDay = $request->input('cropProdCost');
         $post->user_id =auth()->user()->id;
         $post->crop_image = $filenameToStore;
 

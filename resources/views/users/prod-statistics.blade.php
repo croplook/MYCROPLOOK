@@ -21,9 +21,22 @@
         <div class="col-xl-6">
             <div class="card mb-4">
                 <div class="card-header">
-                    <div>Sales Statistics</div>
+                    <div>Profitability Statistics</div>
                     <div class="card-body">
-                </div>
+                        <div class="container">
+                                <div class="row">
+                                    <div class="col-md-6"><b>Crop</b></div>
+                                    {{-- <div class="col-md-3"><b>Prod. Cost</b></div>
+                                    <div class="col-md-3"><b>Earnings</b></div> --}}
+                                    <div class="col-md-6"><b>Profit</b></div>
+                                    @foreach($profits as $profit)
+                                    <div class="col-md-6">{{$profit->crop_name}}</div>
+                                    {{-- <div class="col-md-3">{{$profit->production_cost}}</div>
+                                    <div class="col-md-3">{{$profit->earnings}}</div> --}}
+                                    <div class="col-md-6">{{$profit->crop_profitability}}</div>
+                                    @endforeach
+                                  </div>
+                            </div>
             </div>
         </div>
     </div>

@@ -92,4 +92,7 @@ public function CropList(){
 public function individual_orders(){
     return $this->hasMany('App\IndividualOrder');
 }
+public function DashboardProfit(){
+    return $this->hasMany('App\DashboardProfit');
+}
 }

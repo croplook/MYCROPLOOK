@@ -65,6 +65,7 @@
                                     <p class="card-text mb0">PHP {{$post->earnings}}</p>
                                     <small class="text-secondary">Earnings</small>
                                 </div>
+
                                 <div class="col-3 text-center">
                                 @foreach($buyers as $buyer)
                                     @if($post->id == $buyer->crop_id)
@@ -74,7 +75,28 @@
                                     <small class="text-secondary">Buyers</small>
                                 </div>
                             </div>
+                            <div class="form-row mt20">
+                                <div class="col-3 text-center">
+                                <p class="card-text mb0">
+                                    @if($post->fixed_quantity == null)
+                                    0/{{$post->crop_quantity}}
+                                    @else
+                                    {{$post->kilogram_sold}}/{{$post->fixed_quantity}}
+                                    @endif
+                                </p>
+                                    <small class="text-secondary">Kilogram Sold</small>
+                                </div>
+                                <div class="col-6 text-center">
+                                    <p class="card-text mb0">PHP {{$post->production_cost}}</p>
+                                    <small class="text-secondary">Prod. Cost</small>
+                                </div>
 
+                                <div class="col-3 text-center">
+                                    {{$post->crop_profitability}}
+                                    {{-- {{(int)$post->earnings - (int)$post->production_cost}} --}}
+                                    <small class="text-secondary">Crop Profitability</small>
+                                </div>
+                            </div>
                             {!!Form::open(['action' => ['ExploreProductsController@destroy', $post->id], 'method' =>'POST'])!!}
                             {{Form::hidden('_method', 'DELETE')}}
                             {{Form::submit('Delete', ['class' => 'btn btn-danger'])}}

@@ -180,7 +180,6 @@ private static function smsgateway($phone, $message) {
                 $myOrders = Order::where('user_id', '=', Auth::user()->id)->orderBy('created_at', 'DESC')->take(1)->get();
 
                 $product = Post::find($id);
-
                 $indi_order = new IndividualOrder();
                 $indi_order->orders_id = $myOrders->first()->orders_id;
                 $indi_order->qty = (int) $value['qty'];
@@ -220,6 +219,10 @@ private static function smsgateway($phone, $message) {
                 $sold = $less_quantity;
                 $total = ($old_quantity - $less_quantity);
 
+                $pc = (int) $product->production_cost;
+                $earn = (int) $product->earnings;
+
+
                 $earning = new Earning();
                 $earning->crop_id = $id;
                 $earning->farmer_id = $product->user_id;
@@ -237,9 +240,8 @@ private static function smsgateway($phone, $message) {
                 $product->update(['kilogram_sold' => $kilo_sold + $sold ]);
                 $product->update(['fixed_quantity' => (int) $product->kilogram_sold + (int) $product->crop_quantity ]);
                 $product->update(['earnings' => (int) $product->earnings + $total_price]);
+                $product->update(['crop_profitability' => (int) $product->earnings - (int) $product->production_cost]);
                 $product->update(['percentage_sold_before_harvest' => round((int) $product->kilogram_sold / $product->fixed_quantity * 100, 1)]);
-
-
 
             }
 
