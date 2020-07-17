@@ -31,7 +31,7 @@
 
             axios.get('/contacts')
                 .then((response) => {
-                    console.log(response.data);
+                    console.log(response.data); 
                     this.contacts = response.data;
                 });
         },
