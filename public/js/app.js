@@ -60979,7 +60979,11 @@ window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_0__["default"]({
   key: "943059ff727cb205f922",
   cluster: "ap1",
   encrypted: true
-});
+}); // import Echo from "laravel-echo"
+// window.Echo = new Echo({
+//     broadcaster: 'pusher',
+//     key: 'your-pusher-channels-key'
+// });
 
 /***/ }),
 
