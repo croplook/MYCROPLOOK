@@ -4,17 +4,16 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class IndividualOrder extends Model
+class OrderConfirmation extends Model
 {
-  protected $fillable = ['status'];
     //table name
-    protected $table = 'individual_orders';
+    protected $table = 'confirm_orders';
     //primary key
-    public $primaryKey = 'io_id';
+    public $primaryKey = 'id';
     //timestamps
     public $timestamps = true;
-
-
+  
+  
     public function user(){
       return $this->belongsTo('App\User');
   }

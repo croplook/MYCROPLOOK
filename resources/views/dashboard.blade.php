@@ -6,7 +6,7 @@
     <h3>Dashboard</h3>
      <a href="/explore-products/create" class="btn btn-primary" style="margin-bottom:1rem">Add Product</a>
      <a href="{{route('users.prod-stat')}}" class="btn btn-success" style="margin-bottom:1rem">Products Statistics</a>
-     <a href="{{route('users.orders-confirmation')}}" class="btn btn-info" style="margin-bottom:1rem">Orders Status</a>
+     <a href="{{route('users.orders-dashboard')}}" class="btn btn-info" style="margin-bottom:1rem">Orders Status</a>
 
         <div class="row">
             @if (session('status'))
@@ -44,8 +44,8 @@
                                 }
                                 </style>
                             <div class="progress">
-                                <div class="progress-bar" style="
-                                width: {{$post->percentage_sold_before_harvest}}%;">
+                                                <div class="progress-bar" style="
+                                                width: {{$post->percentage_sold_before_harvest}}%;">
 
                                 </div>
                             </div>
@@ -92,8 +92,7 @@
                                 </div>
 
                                 <div class="col-3 text-center">
-                                    {{$post->crop_profitability}}
-                                    {{-- {{(int)$post->earnings - (int)$post->production_cost}} --}}
+                                     {{(int)$post->earnings - (int)$post->production_cost}}
                                     <small class="text-secondary">Crop Profitability</small>
                                 </div>
                             </div>

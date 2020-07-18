@@ -13,7 +13,9 @@ use App\userProfiles;
 use App\IndividualOrder;
 use App\Order;
 use App\Reservation;
+use App\OrderConfirmation;
 use Session;
+
 
 class ReservationController extends Controller
 {
@@ -185,10 +187,13 @@ private static function smsgateway($phone, $message) {
                 $indi_order->qty = (int) $value['qty'];
                 $indi_order->price = (int) $value['price'];
                 $indi_order->id = $product->id;
+                $indi_order->buyers_id = Auth::user()->id;
                 $indi_order->crop_name = $product->crop_name;
                 $indi_order->crop_price = $product->crop_price;
                 $indi_order->crop_quantity  = $product->crop_quantity;
-                $indi_order->crop_status = $product->crop_status;
+                $indi_order->orders_buyer_name = $order->orders_buyer_name;
+                $indi_order->orders_address = $order->orders_address;
+                $indi_order->orders_mobile_no = $order->orders_mobile_no;
                 $indi_order->orders_created_at = $myOrders->first()->created_at;
                 $indi_order->orders_updated_at = $myOrders->first()->updated_at;
                 $indi_order->user_id = $product->user_id;
@@ -200,7 +205,6 @@ private static function smsgateway($phone, $message) {
                 $indi_order->endHarvestDay = $product->endHarvestDay;
                 $indi_order->endHarvestYear = $product->endHarvestYear;
                 $indi_order->status = "isPending";
-                $indi_order->buyer_number = $request->input('o_mobile_no');
                 $indi_order->save();
 
                 $buyer_sms = userProfiles::where('user_id', $product->user_id)->get();

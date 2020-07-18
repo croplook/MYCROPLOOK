@@ -28,6 +28,7 @@ Route::get('/reservation/my-reservations',
 // ['uses' => 'ReservationController@getReservationsNavbar',
 // 'as' => 'reservation.navbarReservation']);
 
+
 //reduce one in reservation cart
 Route::get('reduce/{id}',
     ['uses' => 'ReservationController@getReduceByOne',
@@ -57,6 +58,25 @@ Route::post('/reservation/checkout',
 'middleware' => 'auth']);
 
 
+
+//click sa delivered orders
+Route::get('/users/delivering/{deli_id}',
+['uses' => 'DashboardController@getDeliveredOrder',
+'as' => 'dashboard.DeliveredOrder']); 
+
+//click sa confirm orders
+Route::get('/users/confirming/{conf_id}',
+['uses' => 'DashboardController@getConfirmedOrders',
+'as' => 'dashboard.ConfirmedOrder']);
+
+// click sa decline orders 
+Route::get('/users/declining/{decl_id}',
+['uses' => 'DashboardController@getDeclinedOrders',
+'as' => 'dashboard.DeclinedOrder']);
+
+//click sa completed orders by farmers
+Route::get('/users/completed-transactions/', ['uses' => 'DashboardController@getCompletedTransaction', 'as' => 'dashboard.CompletedTransaction']);
+
 Route::get('/reservation/confirm-reservations', ['uses' => 'ReservationController@confirmReservation', 'as' => 'placeorder']);
 
 Route::post('/reservation/confirm-reservations', ['uses' => 'ReservationController@postConfirmReservation', 'as' => 'placeorder']);
@@ -83,8 +103,10 @@ Route::get('/explore-farms/view-farmer/', ['uses' => 'ExploreFarmsController@vie
 
 // product statistics
 Route::get('/users/prod-statistics/', ['uses' => 'DashboardController@prodStat', 'as' => 'users.prod-stat']);
-//ordersconfirmation
-Route::get('/users/orders-confirmation/', ['uses' => 'DashboardController@getOrdersConfirmation', 'as' => 'users.orders-confirmation']);
+//orders dashboard
+Route::get('/users/orders-dashboard/', ['uses' => 'DashboardController@getOrdersConfirmation', 'as' => 'users.orders-dashboard']);
+
+//
 
 // invoice
 Route::get('/users/{orders_id}/user-invoice', ['uses' => 'MyAccountController@getUserInvoice', 'as' => 'user.invoice']);

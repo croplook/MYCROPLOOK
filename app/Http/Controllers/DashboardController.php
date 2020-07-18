@@ -12,6 +12,7 @@ use App\farmerChart;
 use App\userProfiles;
 use App\DashboardProfit;
 use App\Order;
+use App\IndividualOrder;
 use Charts;
 use Gate;
 
@@ -64,11 +65,11 @@ public function getOrdersConfirmation()
         return $order;
     });
     // $buyersinfo = Order::where($order->orders_reservation->posts['item']['user_id'],  $current_user_id)->get();
-
     $current_user_id = auth()->user()->id;
-    $user_profile = userProfiles::where('user_id', $current_user_id)->get();
-    return view('users/orders-confirmation', ['orders'=> $orders])
-    ->with('current_user_id', $current_user_id);
+    //$orders_of_buyer = IndividualOrder::where('buyers_id', $current_user_id)->get();
+    $orders_to_confirm = IndividualOrder::where('user_id', $current_user_id)->get();
+    return view('users/orders-dashboard', ['orders'=> $orders])
+    ->with('orders_to_confirm', $orders_to_confirm);
 }
 
 public function prodStat()
@@ -117,4 +118,69 @@ public function prodStat()
     ->with('profits', $profit)
     ->with('posts', $user->posts);
 }
+
+
+public function getConfirmedOrders($conf_id)
+{
+    if(!Gate::allows('isFarmer')){
+        abort(404, 'Sorry, the page you are looking for could not be found');
+    }
+    $indi_order = IndividualOrder::find($conf_id);
+    $indi_order->status = "isConfirmed";
+                
+    $indi_order->save();
+
+    $current_user_id = auth()->user()->id;
+    $orders_to_confirm = IndividualOrder::where('user_id', $current_user_id)->get();
+
+    return redirect()->route('users.orders-dashboard')
+    ->with('success', 'Order Confirmed!')
+    ->with('orders_to_confirm', $orders_to_confirm);
+}
+public function getDeclinedOrders($decl_id)
+{
+    if(!Gate::allows('isFarmer')){
+        abort(404, 'Sorry, the page you are looking for could not be found');
+    }
+    $indi_order = IndividualOrder::find($decl_id);
+    $indi_order->status = "isDeclined";
+    
+    $indi_order->save();
+    
+    $current_user_id = auth()->user()->id;
+    $orders_to_confirm = IndividualOrder::where('user_id', $current_user_id)->get();
+    return redirect()->route('users.orders-dashboard')
+    ->with('success', 'Order Declined!')
+->with('orders_to_confirm', $orders_to_confirm);;
+}
+
+public function getDeliveredOrder($deli_id)
+{
+    if(!Gate::allows('isFarmer')){
+        abort(404, 'Sorry, the page you are looking for could not be found');
+    }
+    $indi_order = IndividualOrder::find($deli_id);
+    $indi_order->status = "isDelivered";
+    
+    $indi_order->save();
+    
+    $current_user_id = auth()->user()->id;
+    $orders_to_confirm = IndividualOrder::where('user_id', $current_user_id)->get();
+    return redirect()->route('users.orders-dashboard')
+    ->with('success', 'Order Delivered!')
+->with('orders_to_confirm', $orders_to_confirm);;
+}
+public function getCompletedTransaction()
+{
+    if(!Gate::allows('isFarmer')){
+        abort(404, 'Sorry, the page you are looking for could not be found');
+    }
+ 
+    
+    $current_user_id = auth()->user()->id;
+    $alltrans = IndividualOrder::where('user_id', $current_user_id)->get();
+    return view('users/completed-transactions')
+->with('alltrans', $alltrans);
+}
+
 }

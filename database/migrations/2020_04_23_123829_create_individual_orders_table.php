@@ -19,13 +19,14 @@ class CreateIndividualOrdersTable extends Migration
             $table->integer('qty');
             $table->integer('price');
             $table->string('id');
+            $table->integer('buyers_id');
             $table->string('crop_name');
             $table->integer('crop_price');
             $table->string('crop_quantity');
             $table->string('crop_status');
             $table->string('orders_created_at');
             $table->string('orders_updated_at');
-            $table->string('user_id');
+            $table->integer('user_id');
             $table->string('crop_image');
             $table->string('startHarvestMonth');
             $table->integer('startHarvestDay');
@@ -33,6 +34,9 @@ class CreateIndividualOrdersTable extends Migration
             $table->string('endHarvestMonth');
             $table->integer('endHarvestDay');
             $table->integer('endHarvestYear');
+            $table->string('orders_buyer_name');
+            $table->string('orders_address');
+            $table->string('orders_mobile_no');
             $table->string('status');
 
             $table->timestamps();

@@ -25,15 +25,15 @@
                     <div class="card-body">
                         <div class="container">
                                 <div class="row">
-                                    <div class="col-md-6"><b>Crop</b></div>
-                                    {{-- <div class="col-md-3"><b>Prod. Cost</b></div>
-                                    <div class="col-md-3"><b>Earnings</b></div> --}}
-                                    <div class="col-md-6"><b>Profit</b></div>
+                                    <div class="col-md-3"><b>Crop</b></div>
+                                    <div class="col-md-3"><b>Prod. Cost</b></div>
+                                    <div class="col-md-3"><b>Earnings</b></div>
+                                    <div class="col-md-3"><b>Profit</b></div>
                                     @foreach($profits as $profit)
-                                    <div class="col-md-6">{{$profit->crop_name}}</div>
-                                    {{-- <div class="col-md-3">{{$profit->production_cost}}</div>
-                                    <div class="col-md-3">{{$profit->earnings}}</div> --}}
-                                    <div class="col-md-6">{{$profit->crop_profitability}}</div>
+                                    <div class="col-md-3">{{$profit->crop_name}}</div>
+                                    <div class="col-md-3">{{$profit->production_cost}}</div>
+                                    <div class="col-md-3">{{$profit->earnings}}</div>
+                                    <div class="col-md-3">{{(int)$profit->earnings - (int)$profit->production_cost}}</div>
                                     @endforeach
                                   </div>
                             </div>

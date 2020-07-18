@@ -95,4 +95,7 @@ public function individual_orders(){
 public function DashboardProfit(){
     return $this->hasMany('App\DashboardProfit');
 }
+public function OrderConfirmation(){
+    return $this->hasMany('App\OrderConfirmation');
+}
 }
