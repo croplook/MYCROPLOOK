@@ -13,6 +13,7 @@ use App\userProfiles;
 use App\DashboardProfit;
 use App\Order;
 use App\IndividualOrder;
+use DB;
 use Charts;
 use Gate;
 
@@ -48,7 +49,7 @@ class DashboardController extends Controller
         //         //crop profitability
         //         $cp =
 
-
+        
         //     }
         // }
 
