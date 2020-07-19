@@ -20,8 +20,6 @@ class CreateChartSalesView extends Migration
             posts.crop_name AS crop_name,
             SUM(posts.fixed_quantity::decimal) AS totalFixedQty,
             SUM(posts.crop_quantity::decimal) AS totalAvailableQty,
-
-            posts.earnings AS earnings,
             SUM(posts.kilogram_sold::decimal) AS totalKgSold,
             AVG(ROUND(posts.percentage_sold_before_harvest::decimal,
                     1)) AS totalPercentage
