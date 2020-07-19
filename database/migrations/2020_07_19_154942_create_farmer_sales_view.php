@@ -18,10 +18,10 @@ class CreateFarmerSalesView extends Migration
         SELECT 
             posts.user_id AS user_id,
             posts.crop_name AS crop_name,
-            SUM(posts.fixed_quantity) AS totalFixedQty,
-            SUM(posts.crop_quantity) AS totalAvailableQty,
-            SUM(posts.kilogram_sold) AS totalKgSold,
-            AVG(ROUND(posts.percentage_sold_before_harvest,
+            SUM(posts.fixed_quantity::decimal) AS totalFixedQty,
+            SUM(posts.crop_quantity::decimal) AS totalAvailableQty,
+            SUM(posts.kilogram_sold::decimal) AS totalKgSold,
+            AVG(ROUND(posts.percentage_sold_before_harvest::decimal,
                     1)) AS totalPercentage
         FROM
             posts
