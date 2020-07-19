@@ -18,9 +18,9 @@ class CreateFarmerTotalqtyView extends Migration
         SELECT 
             posts.user_id AS user_id,
             SUM(posts.crop_quantity::decimal) AS sumCropQty,
-            (posts.crop_price * SUM(posts.crop_quantity::decimal)) AS allCropPrice,
+            (SUM(posts.crop_quantity::decimal) * posts.crop_price) AS allCropPrice,
             AVG(posts.crop_price::decimal) AS avgCropPrice,
-            posts.crop_name AS crop_name,
+            posts.crop_name AS crop_name
         FROM
             posts
         GROUP BY posts.user_id , posts.crop_name
