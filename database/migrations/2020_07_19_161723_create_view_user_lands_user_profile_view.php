@@ -28,8 +28,10 @@ class CreateViewUserLandsUserProfileView extends Migration
         user_profile.user_image AS user_image,
         user_lands.land_id AS land_id
     FROM
-        (user_lands
-        LEFT JOIN user_profile ON ((user_lands.user_id = user_profile.user_id)))
+        user_lands
+
+        LEFT JOIN 
+        user_profile ON user_lands.user_id = user_profile.user_id
         ");
     }
 
