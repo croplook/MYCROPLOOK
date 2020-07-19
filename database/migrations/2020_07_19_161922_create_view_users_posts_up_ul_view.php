@@ -14,10 +14,6 @@ class CreateViewUsersPostsUpUlView extends Migration
     public function up()
     {
         \DB::statement("
-        CREATE 
-        ALGORITHM = UNDEFINED 
-        DEFINER = root@localhost 
-        SQL SECURITY DEFINER
     VIEW view_users_posts_up_ul AS
         SELECT 
             users.id AS id,
