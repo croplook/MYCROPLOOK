@@ -16,7 +16,7 @@ class AddPercentageSoldBeforeHarvestToPostsTable extends Migration
         Schema::table('posts', function (Blueprint $table) {
             //
 
-            $table->double('percentage_sold_before_harvest');
+            $table->string('percentage_sold_before_harvest');
         });
     }
 

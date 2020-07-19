@@ -16,7 +16,7 @@ class AddFixedQuantityToPostsTable extends Migration
         Schema::table('posts', function (Blueprint $table) {
             //
 
-            $table->double('fixed_quantity');
+            $table->integer('fixed_quantity');
         });
     }
 

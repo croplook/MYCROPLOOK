@@ -16,9 +16,9 @@ class CreatePostsTable extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('crop_name');
-            $table->double('crop_price');
+            $table->integer('crop_price');
             $table->string('crop_desc');
-            $table->double('crop_quantity');
+            $table->integer('crop_quantity');
             $table->string('crop_status');
             $table->timestamps();
 
