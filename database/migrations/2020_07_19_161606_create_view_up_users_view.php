@@ -14,18 +14,18 @@ class CreateViewUpUsersView extends Migration
     public function up()
     {
         \DB::statement("
-        CREATE VIEW `view_up_users` AS
+        CREATE VIEW view_up_users AS
         SELECT 
-            `users`.`id` AS `id`,
-            `users`.`register_as` AS `register_as`,
-            `users`.`mobilenumber` AS `mobilenumber`,
-            `users`.`name` AS `name`,
-            `users`.`email` AS `email`,
-            `user_profile`.`user_image` AS `user_image`
+            users.id AS id,
+            users.register_as AS register_as,
+            users.mobilenumber AS mobilenumber,
+            users.name AS name,
+            users.email AS email,
+            user_profile.user_image AS user_image
         FROM
-            (`users`
-            LEFT JOIN `user_profile` ON ((0 <> `user_profile`.`user_id`)))
-        GROUP BY `users`.`id`
+            (users
+            LEFT JOIN user_profile ON ((0 <> user_profile.user_id)))
+        GROUP BY users.id
         ");
     }
 

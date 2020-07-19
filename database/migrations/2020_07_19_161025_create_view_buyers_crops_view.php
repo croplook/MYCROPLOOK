@@ -14,14 +14,14 @@ class CreateViewBuyersCropsView extends Migration
     public function up()
     {
         \DB::statement("
-        CREATE VIEW `view_buyers_crops` AS
+        CREATE VIEW view_buyers_crops AS
         SELECT 
-            `earnings`.`farmer_id` AS `user_id`,
-            `earnings`.`crop_id` AS `crop_id`,
-            COUNT(DISTINCT `earnings`.`buyer_id`) AS `buyers_per_crop`
+            earnings.farmer_id AS user_id,
+            earnings.crop_id AS crop_id,
+            COUNT(DISTINCT earnings.buyer_id) AS buyers_per_crop
         FROM
-            `earnings`
-        GROUP BY `earnings`.`crop_id`
+            earnings
+        GROUP BY earnings.crop_id
         ");
     }
 

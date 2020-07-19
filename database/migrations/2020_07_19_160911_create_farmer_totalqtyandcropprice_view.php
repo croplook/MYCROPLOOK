@@ -14,18 +14,18 @@ class CreateFarmerTotalqtyandcroppriceView extends Migration
     public function up()
     {
         \DB::statement("
-        CREATE VIEW `farmer_totalqtyandcropprice` AS
+        CREATE VIEW farmer_totalqtyandcropprice AS
             SELECT 
-                `posts`.`id` AS `id`,
-                `posts`.`user_id` AS `user_id`,
-                SUM(`posts`.`crop_quantity`) AS `sumCropQty`,
-                (`posts`.`crop_price` * SUM(`posts`.`crop_quantity`)) AS `allCropPrice`,
-                AVG(`posts`.`crop_price`) AS `avgCropPrice`,
-                `posts`.`crop_name` AS `crop_name`,
-                `posts`.`created_at` AS `created_at`
+                posts.id AS id,
+                posts.user_id AS user_id,
+                SUM(posts.crop_quantity) AS sumCropQty,
+                (posts.crop_price * SUM(posts.crop_quantity)) AS allCropPrice,
+                AVG(posts.crop_price) AS avgCropPrice,
+                posts.crop_name AS crop_name,
+                posts.created_at AS created_at
             FROM
-                `posts`
-            GROUP BY `posts`.`user_id` , `posts`.`crop_name`
+                posts
+            GROUP BY posts.user_id , posts.crop_name
                 ");
     }
 
