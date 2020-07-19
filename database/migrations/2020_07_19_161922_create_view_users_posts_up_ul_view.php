@@ -33,15 +33,6 @@ class CreateViewUsersPostsUpUlView extends Migration
             posts.crop_name AS crop_name,
             posts.crop_price AS crop_price,
             posts.crop_quantity AS crop_quantity,
-            posts.endHarvestMonth AS endHarvestMonth,
-            posts.endHarvestYear AS endHarvestYear,
-            posts.endHarvestDay AS endHarvestDay,
-            CONCAT(posts.startHarvestYear,
-                    posts.startHarvestMonth,
-                    posts.startHarvestDay) AS harvestdate,
-            posts.startHarvestYear AS startHarvestYear,
-            posts.startHarvestMonth AS startHarvestMonth,
-            posts.startHarvestDay AS startHarvestDay,
             posts.crop_status AS crop_status,
             user_profile.user_id AS user_id
         FROM
