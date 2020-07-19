@@ -16,7 +16,6 @@ class CreateFarmerSalesView extends Migration
         \DB::statement("
         CREATE VIEW farmer_sales AS
         SELECT 
-            posts.id AS id,
             posts.user_id AS user_id,
             posts.crop_name AS crop_name,
             posts.created_at AS created_at,

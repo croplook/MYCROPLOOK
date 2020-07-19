@@ -16,7 +16,6 @@ class CreateViewPostView extends Migration
         \DB::statement("
         CREATE VIEW view_post AS
     SELECT 
-        posts.id AS posts_id,
         posts.crop_name AS crop_name,
         posts.crop_image AS crop_image,
         posts.crop_price AS crop_price,
