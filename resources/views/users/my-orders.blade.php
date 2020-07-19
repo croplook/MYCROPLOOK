@@ -1,65 +1,107 @@
-@extends('layouts.app')
+@extends('layouts.orders')
 
 @section('content')
+<div>
+     <h4><strong>My Orders</strong></h4><hr>
+     <strong>Orders Confirmation</strong>
+      <div id="ordersbtn">
+            <a href="{{route('dashboard.CompletedTransaction')}}" class="btn btn-success" style="margin-bottom:1rem">Completed transactions</a>
+            <a href="{{route('users.orders-dashboard')}}" class="btn btn-info" style="margin-bottom:1rem">Cancelled Orders</a>
+      </div>
+            <div class="container-fluid px-5 py-5 mx-auto">
+                <div class="row  px-3">
+                
+            @foreach ($orders_to_confirm as $order_item)
+            @if($order_item->status == "isPending")
+                    <div class="block text-center"> <img class="image" src="/storage/uploads/cropImage/{{$order_item->crop_image}}">
+                        <div class="info py-2 px-2">
+                          <div class="row px-3">
+                            
+                                <a class="mb-0 lg-font cart2" type="button" href="{{route('dashboard.DeclinedOrder', ['decl_id'=> $order_item->io_id])}}">CANCEL ORDER</a>
+                             
+                              </div>
+                            <div class="text-left">
+                              <h5 class="mb-0 mt-2">{{$order_item->crop_name}}</h5>
+                              <small class="text-muted mb-1">Crop Price: ₱ {{$order_item->crop_price}} /kg</small><br>
+                              <small class="text-muted mb-1">Quantity Ordered: {{$order_item->qty}} kg</small><br>
+                              <small class="text-muted mb-1">Total price: ₱ {{$order_item->price}} </small>
+                            <hr>
+                            
+                            @foreach ($farmers_info as $farmer_info)
+                            @if($farmer_info->id == $order_item->user_id)
+                            <h6 class="mb-0 mt-2">Buyers Info:</h6>
+                            <small class="text-muted mb-1"> Farmer's Name: {{$farmer_info->first_name}} {{$farmer_info->middle_name}} {{$farmer_info->last_name}} </small><br>
+                            <small class="text-muted mb-1"> Company Name: {{$farmer_info->name_of_company}} </small><br>
+                            <small class="text-muted mb-1"> Mobile Number: {{$farmer_info->mobile_no}}</small><br>
 
+                            @else
+                            @endif
+                            @endforeach
+                            </div>
+                          </div>
+                        </div>
+                        @endif
+                        @endforeach
+                      </div>
+                    </div>
 <div class="panel panel-default panel-order">
-    <div class="panel-heading">
-        <strong>My Orders</strong>
-        <div class="btn-group pull-right">
-            <div class="btn-group">
-              <button type="button" class=" btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
-                Filter Status <i class="fa fa-filter"></i>
-              </button>
-              <ul class="dropdown-menu dropdown-menu-right">
-                <li><a href="#">Approved orders</a></li>
-                <li><a href="#">Pending orders</a></li>
-              </ul>
+              <div class="panel-heading">
+              <h5><strong>Lists of Reservations</strong></h5>
+                  <div class="btn-group pull-right">
+                      <div class="btn-group">
+                            <button type="button" class=" btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                              Filter Reservations <i class="fa fa-filter"></i>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-right">
+                              <li><a href="#">Approved orders</a></li>
+                              <li><a href="#">Pending orders</a></li>
+                            </ul>
+                        </div>
+                  </div>
             </div>
-          </div>
-    </div>
-    <hr>
-
-  <div class="panel-body">
+            <hr>
 
 
-            @foreach ($orders as $order)
-          <div class="row">
-            <div class="col-md-12">
-                @foreach($order->orders_reservation->posts as $post)
-              <div class="col-md-1"><img src="/storage/uploads/cropImage/{{$post['item']['crop_image']}}" style="height: 50px; width: 100px;" class="img-responsive img-thumbnail"></div>
 
-              <span><strong> {{$post['item']['crop_name']}}</strong></span><br>
-              <span> Crop Price: ₱ {{$post['item']['crop_price']}} /kg</span><br>
-              <span> Quantity Ordered: {{$post['qty']}} kg</span><br>
-              <span><strong style="color: red"> Harvest Period: {{$post['item']['startHarvestMonth']}}.
-                {{$post['item']['startHarvestDay']}} {{$post['item']['startHarvestYear']}} -
-                {{$post['item']['endHarvestMonth']}}. {{$post['item']['endHarvestDay']}} {{$post['item']['startHarvestYear']}}
-            </strong></span><br><hr>
-              <span> Total price: ₱ {{$post['price']}} </span><br>
-              <hr>
-              @foreach ($farmers_info as $farmer_info)
-                @if($farmer_info->id == $post['item']['user_id'])
-              <span><strong>Farmer's Info</strong></span><br>
-              <div class="col-md-1"><img src="/storage/uploads/userImage/{{$farmer_info->user_image}}" style="height: 100px; width: 100px;" class="img-responsive"></div>
-            <span> Farmers Name: {{$farmer_info->first_name}} {{$farmer_info->middle_name}} {{$farmer_info->last_name}}</span><br>
-              <span> Company Name: {{$farmer_info->name_of_company}}</span><br>
-              <span> Mobile Number: {{$farmer_info->mobile_no}}</span><br><hr>
-              @else
-              @endif
+            <div class="container-fluid px-5 py-5 mx-auto">
+                <div class="row  px-3">
+                
+            @foreach ($orders_to_confirm as $order_item)
+            @if($order_item->status == "isConfirmed")
+                    <div class="block text-center"> <img class="image" src="/storage/uploads/cropImage/{{$order_item->crop_image}}">
+                        <div class="info py-2 px-2">
+                          <div class="row px-3">
+                            
+                                <a class="mb-0 lg-font btn cart2" type="button" href="{{route('dashboard.DeliveredOrder', ['deli_id'=> $order_item->io_id])}}">CONTACT SELLER</a>
+                            
+                               
+                              </div>
+                              <div class="text-left">
+                              <h5 class="mb-0 mt-2">{{$order_item->crop_name}}</h5>
+                              <small class="text-muted mb-1">Crop Price: ₱ {{$order_item->crop_price}} /kg</small><br>
+                              <small class="text-muted mb-1">Quantity Ordered: {{$order_item->qty}} kg</small><br>
+                              <small class="text-muted mb-1">Total price: ₱ {{$order_item->price}} </small>
+                            <hr>
+                            
+                            @foreach ($farmers_info as $farmer_info)
+                            @if($order_item->user_id == $farmer_info->id)
+                            <h6 class="mb-0 mt-2">Buyers Info:</h6>
+                            <small class="text-muted mb-1"> Farmer's Name: {{$farmer_info->first_name}} {{$farmer_info->middle_name}} {{$farmer_info->last_name}} </small><br>
+                            <small class="text-muted mb-1"> Company Name: {{$farmer_info->name_of_company}} </small><br>
+                            <small class="text-muted mb-1"> Mobile Number: {{$farmer_info->mobile_no}}</small><br>
 
-              @endforeach
-              <br><a data-placement="top" class="btn btn-success btn-md" href="{{route('user.invoice', $post['item']['id'])}}" title="Invoice Reciept"><i class="fa fa-eye" aria-hidden="true"></i></a>
-              <a data-placement="top" class="btn btn-danger  btn-md" href="#" title="Cancel Order"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                            @else
+                            @endif
+                            @endforeach
+                            </div>
+                          </div>
+                        </div>
+                        @endif
+                        @endforeach
+                      </div>
+                    </div>
+</div>
 
-              @endforeach
-                <span><strong>Order Status: </strong></span><span>Rejected</span>
-          <div class="pull right">
-                </div>
-            </div>
-            <div class="col-md-12">
-              Order made on: {{$order->created_at}}
-            </div>
-          </div>
-          @endforeach
-  </div>
+</div>
+
 @endsection

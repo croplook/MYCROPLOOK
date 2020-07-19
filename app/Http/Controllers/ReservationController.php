@@ -29,7 +29,7 @@ class ReservationController extends Controller
         //dd($reservation);
         $request->session()->put('reservation', $reservation);
         //dd($request->session()->get('reservation'));
-        return redirect('/explore-products');
+        return redirect('/explore-products')->with('success', 'Successfully Reserved a Crop! Go to My Reservations tab to continue.');
 
     }
 
