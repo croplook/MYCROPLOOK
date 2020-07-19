@@ -30,12 +30,6 @@ class CreateViewCropProfitView extends Migration
             posts.fixed_quantity AS fixed_quantity,
             posts.earnings AS earnings,
             posts.percentage_sold_before_harvest AS percentage_sold_before_harvest,
-            posts.startHarvestMonth AS startHarvestMonth,
-            posts.startHarvestYear AS startHarvestYear,
-            posts.endHarvestMonth AS endHarvestMonth,
-            posts.endHarvestYear AS endHarvestYear,
-            posts.startHarvestDay AS startHarvestDay,
-            posts.endHarvestDay AS endHarvestDay,
             posts.production_cost AS production_cost,
             posts.crop_profitability AS crop_profitability
         FROM
