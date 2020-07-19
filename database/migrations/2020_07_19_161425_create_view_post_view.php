@@ -22,8 +22,6 @@ class CreateViewPostView extends Migration
         posts.crop_price AS crop_price,
         posts.crop_quantity AS crop_quantity,
         users.id AS id,
-        posts.endHarvestDay AS endHarvestDay,
-        posts.startHarvestDay AS startHarvestDay,
         posts.crop_status AS crop_status
     FROM
         (posts
