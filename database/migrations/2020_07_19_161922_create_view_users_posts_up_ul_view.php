@@ -14,7 +14,7 @@ class CreateViewUsersPostsUpUlView extends Migration
     public function up()
     {
         \DB::statement("
-    VIEW view_users_posts_up_ul AS
+    CREATE VIEW view_users_posts_up_ul AS
         SELECT 
             users.id AS id,
             posts.id AS post_id,
