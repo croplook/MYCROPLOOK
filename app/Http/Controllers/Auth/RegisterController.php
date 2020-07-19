@@ -70,18 +70,8 @@ class RegisterController extends Controller
 
 
         
-        if($request->hasFile('cropImage')){
-            //get the filename with the extension
-            $filenameWithExt = $request->file('cropImage')->getClientOriginalName();
-            //get just filename
-            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-            //get just extension
-            $extension= $request->file('cropImage')->getClientOriginalExtension();
-            $filenameToStore = $filename.'_'.time().'.'.$extension;
-            // upload image
-            $path = $request->file('cropImage')->storeAs('public/uploads/cropImage/', $filenameToStore);
 
-        }
+            $filenameToStore = "no-image.jpg";
 
         
         return User::create([
