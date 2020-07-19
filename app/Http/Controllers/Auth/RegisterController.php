@@ -55,6 +55,7 @@ class RegisterController extends Controller
             'mobilenumber' => ['required', 'string', 'max:20'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'user_image' => 'Image|nullable',
         ]);
     }
 
@@ -66,12 +67,30 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+
+
+        
+        if($request->hasFile('cropImage')){
+            //get the filename with the extension
+            $filenameWithExt = $request->file('cropImage')->getClientOriginalName();
+            //get just filename
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            //get just extension
+            $extension= $request->file('cropImage')->getClientOriginalExtension();
+            $filenameToStore = $filename.'_'.time().'.'.$extension;
+            // upload image
+            $path = $request->file('cropImage')->storeAs('public/uploads/cropImage/', $filenameToStore);
+
+        }
+
+        
         return User::create([
             'register_as' => $data['register_as'],
             'name' => $data['name'],
             'mobilenumber' => $data['mobilenumber'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'user_image' => $filenameToStore,
         ]);
     }
 }
