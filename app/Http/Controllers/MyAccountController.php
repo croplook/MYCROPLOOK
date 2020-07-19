@@ -167,7 +167,6 @@ class MyAccountController extends Controller
 
             //update user
                 $user_profile = userProfiles::find($user_profile_id);
-                $user_image = User::auth()->user()->id;
                 $user_profile->first_name = $request->input('firstName');
                 $user_profile->middle_name = $request->input('middleName');
                 $user_profile->last_name = $request->input('lastName');
