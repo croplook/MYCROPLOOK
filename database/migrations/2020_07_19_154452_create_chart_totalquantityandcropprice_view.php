@@ -23,7 +23,7 @@ class CreateChartTotalquantityandcroppriceView extends Migration
         AVG(posts.crop_price::decimal) AS avgCropPrice
         FROM
         posts
-        GROUP BY posts.crop_name
+        GROUP BY posts.crop_name, posts.crop_price
         ");
     }
 
