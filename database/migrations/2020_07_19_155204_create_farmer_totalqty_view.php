@@ -23,7 +23,7 @@ class CreateFarmerTotalqtyView extends Migration
             posts.crop_name AS crop_name
         FROM
             posts
-        GROUP BY posts.user_id , posts.crop_name
+        GROUP BY posts.user_id , posts.crop_name, posts.crop_price
         ");
     }
 
