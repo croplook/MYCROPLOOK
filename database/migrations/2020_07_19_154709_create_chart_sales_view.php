@@ -19,7 +19,6 @@ class CreateChartSalesView extends Migration
         AS
         SELECT 
             posts.crop_name AS crop_name,
-            posts.user_id AS user_id,
             posts.created_at AS created_at,
             SUM(posts.fixed_quantity::decimal) AS totalFixedQty,
             SUM(posts.crop_quantity::decimal) AS totalAvailableQty,
