@@ -46,9 +46,14 @@ class CreateViewUsersPostsUpUlView extends Migration
             user_profile.user_id AS user_id
         FROM
             users
-            LEFT JOIN user_profile ON users.id = user_profile.user_id
-            LEFT JOIN user_lands ON users.id = user_lands.user_id
-            LEFT JOIN posts ON users.id = posts.user_id
+        LEFT JOIN 
+            user_profile ON users.id::integer = user_profile.user_id::integer
+
+        LEFT JOIN 
+            user_lands ON users.id::integer = user_lands.user_id::integer
+
+        LEFT JOIN 
+            posts ON users.id::integer = posts.user_id::integer
         ");
     }
 
