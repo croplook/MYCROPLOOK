@@ -16,6 +16,7 @@ class CreateViewCropProfitView extends Migration
         \DB::statement("
         CREATE VIEW view_crop_profit AS
         SELECT 
+            posts.id AS id,
             posts.crop_name AS crop_name,
             posts.crop_price AS crop_price,
             posts.crop_desc AS crop_desc,

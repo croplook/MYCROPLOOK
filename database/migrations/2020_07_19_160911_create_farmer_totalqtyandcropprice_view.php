@@ -16,6 +16,7 @@ class CreateFarmerTotalqtyandcroppriceView extends Migration
         \DB::statement("
         CREATE VIEW farmer_totalqtyandcropprice AS
             SELECT 
+                posts.id AS id,
                 posts.user_id AS user_id,
                 SUM(posts.crop_quantity::decimal) AS sumCropQty,
                 (posts.crop_price * SUM(posts.crop_quantity::decimal)) AS allCropPrice,

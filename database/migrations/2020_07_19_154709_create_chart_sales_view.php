@@ -17,7 +17,9 @@ class CreateChartSalesView extends Migration
         \DB::statement("
         CREATE VIEW chart_sales 
         AS
-        SELECT 
+        SELECT DISTINCT ON (posts.crop_name)
+            posts.id AS id,
+            posts.user_id AS user_id,
             posts.crop_name AS crop_name,
             posts.created_at AS created_at,
             SUM(posts.fixed_quantity::decimal) AS totalFixedQty,
@@ -28,7 +30,6 @@ class CreateChartSalesView extends Migration
                     1)) AS totalPercentage
         FROM
             posts
-        GROUP BY posts.crop_name
         ");
     }
 

@@ -16,6 +16,7 @@ class CreateFarmerSalesView extends Migration
         \DB::statement("
         CREATE VIEW farmer_sales AS
         SELECT 
+            posts.id AS id,
             posts.user_id AS user_id,
             posts.crop_name AS crop_name,
             posts.created_at AS created_at,
@@ -23,7 +24,7 @@ class CreateFarmerSalesView extends Migration
             SUM(posts.crop_quantity::decimal) AS totalAvailableQty,
             posts.earnings AS earnings,
             SUM(posts.kilogram_sold::decimal) AS totalKgSold,
-            AVG(ROUND(posts.percentage_sold_before_harvest::decimal,
+            AVG(ROUND(posts.percentage_sold_before_harvest,
                     1)) AS totalPercentage
         FROM
             posts
