@@ -16,7 +16,7 @@ class CreateChartSalesView extends Migration
         
         \DB::statement("
         CREATE VIEW chart_sales AS
-        SELECT DISTICT ON (posts.crop_name)
+        SELECT DISTINCT ON (posts.crop_name)
             posts.crop_name AS crop_name,
             SUM(posts.fixed_quantity::decimal) AS totalFixedQty,
             SUM(posts.crop_quantity::decimal) AS totalAvailableQty,
