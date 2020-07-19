@@ -45,10 +45,10 @@ class CreateViewUsersPostsUpUlView extends Migration
             posts.crop_status AS crop_status,
             user_profile.user_id AS user_id
         FROM
-            (((users
-            LEFT JOIN user_profile ON ((users.id = user_profile.user_id)))
-            LEFT JOIN user_lands ON ((users.id = user_lands.user_id)))
-            LEFT JOIN posts ON ((users.id = posts.user_id)))
+            users
+            LEFT JOIN user_profile ON users.id = user_profile.user_id
+            LEFT JOIN user_lands ON users.id = user_lands.user_id
+            LEFT JOIN posts ON users.id = posts.user_id
         ");
     }
 
