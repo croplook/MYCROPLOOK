@@ -29,6 +29,7 @@ class CreateChartSalesView extends Migration
                     1)) AS totalPercentage
         FROM
             posts
+        GROUP BY posts.crop_name
         ");
     }
 
