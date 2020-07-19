@@ -18,14 +18,14 @@ class CreateChartSalesView extends Migration
         CREATE VIEW chart_sales AS
         SELECT 
             posts.crop_name AS crop_name,
-            SUM(posts.fixed_quantity) AS totalFixedQty,
-            SUM(posts.crop_quantity) AS totalAvailableQty,
+            SUM(posts.fixed_quantity::decimal) AS totalFixedQty,
+            SUM(posts.crop_quantity::decimal) AS totalAvailableQty,
             posts.id AS id,
             posts.user_id AS user_id,
             posts.created_at AS created_at,
             posts.earnings AS earnings,
-            SUM(posts.kilogram_sold) AS totalKgSold,
-            AVG(ROUND(posts.percentage_sold_before_harvest,
+            SUM(posts.kilogram_sold::decimal) AS totalKgSold,
+            AVG(ROUND(posts.percentage_sold_before_harvest::decimal,
                     1)) AS totalPercentage
         FROM
             posts
