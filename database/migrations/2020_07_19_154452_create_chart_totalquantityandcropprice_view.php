@@ -16,7 +16,7 @@ class CreateChartTotalquantityandcroppriceView extends Migration
         \DB::statement("
         CREATE VIEW chart_totalquantityandcropprice
         AS
-        SELECT DISTINCT (posts.crop_name),
+        SELECT  
         posts.id AS id,
         posts.user_id AS user_id,
         SUM(posts.crop_quantity::decimal) AS sumCropQty,
@@ -26,6 +26,7 @@ class CreateChartTotalquantityandcroppriceView extends Migration
         posts.created_at AS created_at
         FROM
         posts
+        GROUP BY posts.crop_name
         ");
     }
 
