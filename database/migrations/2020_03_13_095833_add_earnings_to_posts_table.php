@@ -16,7 +16,7 @@ class AddEarningsToPostsTable extends Migration
         Schema::table('posts', function (Blueprint $table) {
             //
 
-            $table->string('earnings');
+            $table->double('earnings');
         });
     }
 

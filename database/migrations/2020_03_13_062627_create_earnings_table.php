@@ -18,10 +18,10 @@ class CreateEarningsTable extends Migration
             $table->integer('farmer_id');
             $table->integer('crop_id');
             $table->integer('buyer_id');  //customer id
-            $table->string('kilogram_sold');
-            $table->string('fixed_quantity');
-            $table->string('earnings');
-            $table->string('percentage_sold_before_harvest');
+            $table->double('kilogram_sold');
+            $table->double('fixed_quantity');
+            $table->double('earnings');
+            $table->double('percentage_sold_before_harvest');
             $table->timestamps();
         });
     }

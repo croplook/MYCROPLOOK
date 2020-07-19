@@ -15,7 +15,7 @@ class AddKilogramSoldToPostsTable extends Migration
     {
         Schema::table('posts', function (Blueprint $table) {
             //
-            $table->string('kilogram_sold');
+            $table->double('kilogram_sold');
         });
     }
 
