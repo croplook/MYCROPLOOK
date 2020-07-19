@@ -152,6 +152,9 @@ class MyAccountController extends Controller
                 // upload image
                 $path = $request->file('userImage')->storeAs('public/uploads/userImage/', $filenameToStore);
 
+            }else
+            {
+                $filenameToStore = "no-image.jpg";
             }
 
             $this->validate($request, [
