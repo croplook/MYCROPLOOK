@@ -181,10 +181,8 @@ class MyAccountController extends Controller
                 $user_profile->user_id = auth()->user()->id;
                 if($request->hasFile('userImage')){
                 $user_profile->user_image = $filenameToStore;
-                $user_image->user_image = $filenameToStore;
                 }
 
-                $user_image->save();
                 $user_profile->save();
 
             return redirect('explore-products')->with('success', 'User Profile Updated!');
