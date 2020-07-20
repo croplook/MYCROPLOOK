@@ -15,7 +15,7 @@
 				 				<div class="product">
 				 					<div class="row">
 					 					<div class="col-md-3">
-					 						<img class="img-fluid mx-auto d-block image" src="storage/uploads/cropImage/{{$post['item']['crop_image']}}" >
+					 						<img class="img-fluid mx-auto d-block image" src="/storage/uploads/cropImage/{{$post['item']['crop_image']}}" >
 					 					</div>
 					 					<div class="col-md-8">
 					 						<div class="info">
@@ -91,7 +91,7 @@
             <ul class="list-group ">
                 @foreach($posts as $post)
                 <li class="list-group-item">
-                    <img src="storage/uploads/cropImage/{{$post['item']['crop_image']}}" style="width: 50px; height: 50px;" />
+                    <img src="/storage/uploads/cropImage/{{$post['item']['crop_image']}}" style="width: 50px; height: 50px;" />
                 <strong>{{ $post['item']['crop_name']}}</strong>
                 <strong>{{ $post['item']['farmer'] }}</strong>
                 <span class="label label-success">{{$post['price']}}</span>

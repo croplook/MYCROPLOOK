@@ -81,6 +81,7 @@ class PagesController extends Controller
         $salesPercentage = cropSalesChart::orderBy('crop_name')
         ->pluck('totalpercentage','crop_name');
 
+        $top10 = cropSalesChart::orderBy('crop_name','desc')->get();
 
        $salesChart = new postsChart;
         $salesChart->labels($salesKg->keys());
@@ -111,6 +112,7 @@ class PagesController extends Controller
         ->with('$totalQty', $totalQty)
         ->with('chart', $chart)
         ->with('salesChart', $salesChart)
+        ->with('top10', $top10)
         ->with('allPosts', $totalQty);
     }
 

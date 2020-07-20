@@ -10,7 +10,7 @@
         @foreach($posts as $post)
         <div class="col-sm-6 col-md-4 border-dark">
           <div class="thumbnail" style="margin:10px" >
-            <img style="height: 200px; width: 100%" class="img-responsive" src="storage/uploads/cropImage/{{$post->crop_image}}">
+            <img style="height: 200px; width: 100%" class="img-responsive" src="/storage/uploads/cropImage/{{$post->crop_image}}">
             <div class="caption">
                 <h5><a href="/explore-products/{{$post->id}}" >{{$post->crop_name}}</a></h5>
 

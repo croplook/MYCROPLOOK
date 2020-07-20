@@ -4,7 +4,7 @@
 
             <li v-for="contact in sortedContacts" :key="contact.id" @click="selectContact(contact)" :class="{ 'selected': contact == selected }">
                 <div class="avatar">
-                    <img v-bind:src="'storage/uploads/userImage/' + contact.user_image" :alt="contact.name">
+                    <img v-bind:src="'/storage/uploads/userImage/' + contact.user_image" :alt="contact.name">
                 </div>
                 <div class="contact">
                     <p class="name">{{ contact.name }}</p>

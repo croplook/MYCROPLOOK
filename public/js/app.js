@@ -48564,7 +48564,7 @@ var render = function() {
             _c("div", { staticClass: "avatar" }, [
               _c("img", {
                 attrs: {
-                  src: "storage/uploads/userImage/" + contact.user_image,
+                  src: "/storage/uploads/userImage/" + contact.user_image,
                   alt: contact.name
                 }
               })

@@ -8,7 +8,7 @@
 
 <h1>{{$post->crop_name}}</h1>
     <div>
-<img style="" class="mi i" src="storage/uploads/cropImage/{{$post->crop_image}}">
+<img style="" class="mi i" src="/storage/uploads/cropImage/{{$post->crop_image}}">
                <br><br>
         <h6>Crop Price: <b>{{$post->crop_price}}</b> / kg</h6>
         <h6>Description: {{$post->crop_desc}}</h6>
@@ -46,7 +46,7 @@
                         <div class="col-12">
                             <div class="row">
                                 <div class="col-12 col-lg-6 col-xl-6 justify-content-center" style="margin-right:-15px;">
-                                    <img style="" class="mi i" src="storage/uploads/cropImage/{{$post->crop_image}}">
+                                    <img style="" class="mi i" src="/storage/uploads/cropImage/{{$post->crop_image}}">
                                 </div>
                                 <div class="col-12 col-lg-6 col-xl-6">
                                     <div class="row mt20">
@@ -197,7 +197,7 @@
                     <div class="card align-items-center border-none">
                         <div class="mt20">
                             <div >
-                                <img  style="background:#4B524E; width:80px; height:80px; border-radius:40px;" src="storage/uploads/userImage/{{$farm->user_image}}">
+                                <img  style="background:#4B524E; width:80px; height:80px; border-radius:40px;" src="/storage/uploads/userImage/{{$farm->user_image}}">
                             </div>
                         </div>
                         <div class="card-body pt15 pb0">
@@ -263,7 +263,7 @@
                             <div class="col-12 col-xs-12 col-sm-6 col-xl-12">
                                 <div class="row">
                                     <div class="col-3 col-sm-2 col-xl-3">
-                                        <img class="mr10 img img10 product-ic-sm"  src="storage/uploads/cropImage/{{$farmproduct->crop_image}}" alt="Explore Image">
+                                        <img class="mr10 img img10 product-ic-sm"  src="/storage/uploads/cropImage/{{$farmproduct->crop_image}}" alt="Explore Image">
                                     </div>
                                     <div class="col-9 col-sm-10 col-xl-9 pl0 lh-md">
                                         <div class="col-12 text-lato-bold">{{$farmproduct->crop_name}}</div>
@@ -291,7 +291,7 @@
                             <div class="col-12">
                                 <div class="card m15 border-none">
                                     <a href="/explore-products/{{$allPost->post_id}}">
-                                    <img class="card-img-top" src="storage/uploads/cropImage/{{$allPost->crop_image}}" alt="Explore Image">
+                                    <img class="card-img-top" src="/storage/uploads/cropImage/{{$allPost->crop_image}}" alt="Explore Image">
                                         <div class="card-img-overlay overlay d-flex flex-column p0 tag-img">
 
                                             <p class="card-tag-solid text-lato-bold">In Season</p>
@@ -312,7 +312,7 @@
                                                 <div class="col-12">
                                                     <div class="row">
                                                         <div class="pl15 pr0">
-                                                            <img src="storage/uploads/landImage/{{$allPost->land_image}}" style="background:#4B524E; width:40px; height:40px; border-radius:20px;">
+                                                            <img src="/storage/uploads/landImage/{{$allPost->land_image}}" style="background:#4B524E; width:40px; height:40px; border-radius:20px;">
                                                         </div>
                                                         <div class="pl0">
                                                             <div class="col-12">{{$allPost->name_of_company}}</div>

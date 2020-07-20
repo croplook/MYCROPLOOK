@@ -19,19 +19,19 @@
         </ol>
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img class="d-block w-100" src="storage/uploads/banners/banner1.jpg" alt="First slide">
+            <img class="d-block w-100" src="/storage/uploads/banners/banner1.jpg" alt="First slide">
           </div>
           <div class="carousel-item">
-            <img class="d-block w-100" src="storage/uploads/banners/banner2.jpg" alt="Second slide">
+            <img class="d-block w-100" src="/storage/uploads/banners/banner2.jpg" alt="Second slide">
           </div>
           <div class="carousel-item">
-            <img class="d-block w-100" src="storage/uploads/banners/banner3.jpg" alt="Third slide">
+            <img class="d-block w-100" src="/storage/uploads/banners/banner3.jpg" alt="Third slide">
           </div>
           <div class="carousel-item">
-            <img class="d-block w-100" src="storage/uploads/banners/banner4.jpg" alt="Third slide">
+            <img class="d-block w-100" src="/storage/uploads/banners/banner4.jpg" alt="Third slide">
           </div>
           <div class="carousel-item">
-            <img class="d-block w-100" src="storage/uploads/banners/banner5.jpg" alt="Third slide">
+            <img class="d-block w-100" src="/storage/uploads/banners/banner5.jpg" alt="Third slide">
           </div>
         </div>
         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -48,24 +48,67 @@
     <h5 >Barangay Kapatagan Agricultural Trading Portal with Real-Time SMS Notification for Crop-Growth Monitoring</h5>
    </div> --}}
 
-<div class="row">
-       <div class="w 1/2">
-            <h4>Crop Statistics</h4>
-             {!! $chart->container() !!}
+
+   <div class="row">
+       <div class="col-sm-6">
+            <h4>TOP 10 BEST SELLING CROPS</h4>
+            <table class="table table-hover" id="dev-table">
+						<thead>
+							<tr>
+                <th>Crop name</th>
+                <th>Kilograms Sold</th>
+							</tr>
+						</thead>
+						<tbody>
+            @if(count($top10) < 10)
+            @foreach ($top10 as $top)
+          <tr>
+            <td>{{$top->crop_name}}</td>
+            <td>{{$top->totalkgsold}}</td>
+          </tr>
+            @endforeach
+            @endif
+						</tbody>
+					</table>
         </div>
 
-    <div class="w 1/2">
-        <h4>Crops Sales</h4>
+    <div class="col-sm-6 ranking">
+        <h4 class="">TOP 10 AVAILABLE CROPS</h4>
+        <table class="table table-hover" id="dev-table">
+						<thead>
+							<tr>
+                <th>Crop name</th>
+                <th>Total Available Qty (Kg)</th>
+							</tr>
+						</thead>
+						<tbody>
+            @if(count($top10) < 10)
+            @foreach ($top10 as $top)
+          <tr>
+            <td>{{$top->crop_name}}</td>
+            <td>{{$top->totalavailableqty}}</td>
+          </tr>
+            @endforeach
+            @endif
+						</tbody>
+					</table>
+    </div>
+
+</div>
+
+<hr>
+<div class="row">
+       <div class="flex col-md-6">
+             {!! $chart->container() !!}
+        </div>
+        
+    <div class="flex col-md-6">
         {!! $salesChart->container() !!}
     </div>
 
 </div>
-{{-- <div class="flex">
-    <h4>Crops Span</h4>
-    <div class="w 1/2">
- {!! $spanChart->container() !!}
- </div> --}}
-</div>
+
+
 
 <div class="row">
        <div class="col-md-6 col-sm-6">
@@ -83,7 +126,7 @@
         @foreach($posts as $post)
 
         <div class="card">
-            <img style="height: 200px;" class="img-responsive" src="storage/uploads/cropImage/{{$post->crop_image}}">
+            <img style="height: 200px;" class="img-responsive" src="/storage/uploads/cropImage/{{$post->crop_image}}">
             <div class="card-body">
                 <h5 class="card-title"><a href="/explore-products/{{$post->id}}" >{{$post->crop_name}}</a></h5>
                 <h6 class="card-text"> {{$post->crop_desc}}</h6>
@@ -114,7 +157,7 @@
          @foreach($user_lands as $user_land)
 
          <div class="card">
-             <img style="height: 200px;" class="img-responsive" src="storage/uploads/landImage/{{$user_land->land_image}}">
+             <img style="height: 200px;" class="img-responsive" src="/storage/uploads/landImage/{{$user_land->land_image}}">
              <div class="card-body">
                  <h3 class="card-title">{{$user_land->name_of_company}}</h3>
                  <h5 class="card-text"> {{$user_land->land_address}}</h5>
