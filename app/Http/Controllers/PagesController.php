@@ -43,17 +43,17 @@ class PagesController extends Controller
         // $chart->labels($allPosts->keys());
         // $chart->dataset('Crops', 'line', $allPosts->values());
 
-        $totalQty = totalChart::orderBy('created_at')
+        $totalQty = totalChart::orderBy('crop_name')
         ->pluck('sumcropqty','crop_name');
 
-       $totalPrice = totalChart::orderBy('created_at')
+       $totalPrice = totalChart::orderBy('crop_name')
         ->pluck('avgcropprice','crop_name');
 
 
-        $salesKg = cropSalesChart::orderBy('created_at')
+        $salesKg = cropSalesChart::orderBy('crop_name')
         ->pluck('totalkgsold','crop_name');
 
-        $salesFixedQuantity = cropSalesChart::orderBy('created_at')
+        $salesFixedQuantity = cropSalesChart::orderBy('crop_name')
         ->pluck('totalfixedqty','crop_name');
 
 

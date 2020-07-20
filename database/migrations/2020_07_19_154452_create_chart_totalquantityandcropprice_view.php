@@ -20,7 +20,8 @@ class CreateChartTotalquantityandcroppriceView extends Migration
         posts.crop_name AS crop_name,
         SUM(posts.crop_quantity::decimal) AS sumcropqty,
         (SUM(posts.crop_quantity::decimal) * posts.crop_price::decimal) AS allcropprice,
-        AVG(posts.crop_price::decimal) AS avgcropprice
+        AVG(posts.crop_price::decimal) AS avgcropprice,
+        created_at
         FROM
         posts
         GROUP BY posts.crop_name, posts.crop_price
