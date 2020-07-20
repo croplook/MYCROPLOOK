@@ -39,7 +39,47 @@ a {
 .cart:hover {
     background-color: #00796B;
 }
+.order3 {
+    color: #272e2d;
+    padding: 6px 5px;
+    width: 40%;
+    border: 2px solid #d11212;
+    cursor: pointer
+}
+.btnrec {
+    display: inline-block;
+    color: #212529;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+    background-color: transparent;
+    border: 1px solid transparent;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    border-radius: 0.25rem;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.order3:hover {
+    color: #fff;
+    background-color: #be1616;
+}
+.cart3 {
+    background-color: #26A69A;
+    color: #fff;
+    padding: 6px;
+    width: 55%;
+    margin-right: 2%;
+    border: 2px solid #2ca71b;
+    cursor: pointer
+}
 
+.cart3:hover {
+    background-color: #00796B;
+}
 .cart2 {
     background-color: #26A69A;
     color: #fff;

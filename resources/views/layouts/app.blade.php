@@ -15,7 +15,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ secure_asset('js/app.js') }}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -145,6 +145,6 @@
 
       <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
       <!-- Include all compiled plugins (below), or include individual files as needed -->
-      <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+      <script src="{{ secure_asset('js/bootstrap.min.js') }}"></script>
 </body>
 </html>

@@ -72,8 +72,9 @@
                         <div class="info py-2 px-2">
                           <div class="row px-3">
                             
-                                <a class="mb-0 lg-font btn cart2" type="button" href="{{route('dashboard.DeliveredOrder', ['deli_id'=> $order_item->io_id])}}">CONTACT SELLER</a>
+                                <a class="btn btnrec cart3" type="button" href="{{route('dashboard.DeliveredOrder', ['deli_id'=> $order_item->io_id])}}"><small class=" mb-1">CONTACT SELLER</small></a>
                             
+                                <a class="mb-0 lg-font btn order3" type="button" href="{{route('dashboard.DeliveredOrder', ['deli_id'=> $order_item->io_id])}}"><small class=" mb-1">RECIEVED</small></a>
                                
                               </div>
                               <div class="text-left">
