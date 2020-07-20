@@ -75,10 +75,10 @@ class PagesController extends Controller
         $chart->dataset('Crop Sales Kilogram', 'line', $salesKg->values())
         ->backgroundColor('grey');
 
-        $data = cropSalesChart::orderBy('created_at')
+        $data = cropSalesChart::orderBy('crop_name')
         ->pluck('totalfixedqty', 'totalkgsold');
 
-        $salesPercentage = cropSalesChart::orderBy('created_at')
+        $salesPercentage = cropSalesChart::orderBy('crop_name')
         ->pluck('totalpercentage','crop_name');
 
 
