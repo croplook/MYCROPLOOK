@@ -24,7 +24,7 @@
                     <div class="thumbnail" style="margin:10px" >
                     <a href="/explore-products/{{$post->id}}/edit/">
                         <div class="card-img lazy" style="height: 200px;">
-                            <img style="height: 200px; width: 100%" src="/storage/uploads/cropImage/{{$post->crop_image}}">
+                            <img style="height: 200px; width: 100%" src="storage/uploads/cropImage/{{$post->crop_image}}">
                         </div>
                         <div class="card-body">
                             <h6 class="mb0">{{$post->crop_name}}</h6>

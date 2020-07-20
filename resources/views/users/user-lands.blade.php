@@ -22,7 +22,7 @@
     <div class="box-body">
         @if(count($user_profile) > 0)
         @foreach ($user_profile as $current_user)
-        <img style="height: 200px; width: 50%;" class="img-responsive" src="/storage/uploads/landImage/{{$current_user->land_image}}">
+        <img style="height: 200px; width: 50%;" class="img-responsive" src="storage/uploads/landImage/{{$current_user->land_image}}">
         <h2>{{$current_user->name_of_company}}</h2>
         <p><strong>Land Address: </strong> {{$current_user->land_address}} </p>
         <p><strong>Land Area: </strong>{{$current_user->land_area}} </p>

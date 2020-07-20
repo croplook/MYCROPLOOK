@@ -13,7 +13,7 @@
         @if(count($orders_to_confirm) == 0)
             @foreach ($orders_to_confirm as $order_item)
               @if($order_item->status == "isPending")
-                    <div class="block text-center"> <img class="image" src="/storage/uploads/cropImage/{{$order_item->crop_image}}">
+                    <div class="block text-center"> <img class="image" src="storage/uploads/cropImage/{{$order_item->crop_image}}">
                         <div class="info py-2 px-2">
                           <div class="row px-3">
                             
@@ -71,7 +71,7 @@
                 
             @foreach ($orders_to_confirm as $order_item)
             @if($order_item->status == "isConfirmed")
-                    <div class="block text-center"> <img class="image" src="/storage/uploads/cropImage/{{$order_item->crop_image}}">
+                    <div class="block text-center"> <img class="image" src="storage/uploads/cropImage/{{$order_item->crop_image}}">
                         <div class="info py-2 px-2">
                           <div class="row px-3">
                             
@@ -129,7 +129,7 @@
                 
             @foreach ($orders_to_confirm as $order_item)
             @if($order_item->status == "isDelivered")
-                    <div class="block text-center"> <img class="image" src="/storage/uploads/cropImage/{{$order_item->crop_image}}">
+                    <div class="block text-center"> <img class="image" src="storage/uploads/cropImage/{{$order_item->crop_image}}">
                         <div class="info py-2 px-2">
                           <div class="row px-3">
                             

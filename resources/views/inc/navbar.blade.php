@@ -103,7 +103,7 @@
                                 <li>
                                     <span class="item">
                                       <span class="item-left">
-                                        <img src="/storage/uploads/cropImage/{{$post['item']['crop_image']}}" style="width: 50px; height: 50px;" />
+                                        <img src="storage/uploads/cropImage/{{$post['item']['crop_image']}}" style="width: 50px; height: 50px;" />
                                           <span class="item-info">
                                             <strong>{{ $post['item']['crop_name']}}</strong>
                                             <strong>{{ $post['price'] }}</strong>

@@ -9,7 +9,7 @@
                          <div class="product">
                              <div class="row">
                                  <div class="col-md-3">
-                                     <img class="img-fluid mx-auto d-block image" src="/storage/uploads/cropImage/{{$post['item']['crop_image']}}" >
+                                     <img class="img-fluid mx-auto d-block image" src="storage/uploads/cropImage/{{$post['item']['crop_image']}}" >
                                  </div>
                                  <div class="col-md-8">
                                      <div class="info">

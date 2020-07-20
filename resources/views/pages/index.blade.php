@@ -83,7 +83,7 @@
         @foreach($posts as $post)
 
         <div class="card">
-            <img style="height: 200px;" class="img-responsive" src="/storage/uploads/cropImage/{{$post->crop_image}}">
+            <img style="height: 200px;" class="img-responsive" src="storage/uploads/cropImage/{{$post->crop_image}}">
             <div class="card-body">
                 <h5 class="card-title"><a href="/explore-products/{{$post->id}}" >{{$post->crop_name}}</a></h5>
                 <h6 class="card-text"> {{$post->crop_desc}}</h6>
@@ -114,7 +114,7 @@
          @foreach($user_lands as $user_land)
 
          <div class="card">
-             <img style="height: 200px;" class="img-responsive" src="/storage/uploads/landImage/{{$user_land->land_image}}">
+             <img style="height: 200px;" class="img-responsive" src="storage/uploads/landImage/{{$user_land->land_image}}">
              <div class="card-body">
                  <h3 class="card-title">{{$user_land->name_of_company}}</h3>
                  <h5 class="card-text"> {{$user_land->land_address}}</h5>
