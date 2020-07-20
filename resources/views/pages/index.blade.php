@@ -64,7 +64,7 @@
             @foreach ($top10 as $top)
           <tr>
             <td>{{$top->crop_name}}</td>
-            <td>{{$top->totalkgsold}}</td>
+            <td>{{$top->totalKgSold}}</td>
           </tr>
             @endforeach
             @endif
@@ -86,7 +86,7 @@
             @foreach ($top10 as $top)
           <tr>
             <td>{{$top->crop_name}}</td>
-            <td>{{$top->totalavailableqty}}</td>
+            <td>{{$top->totalAvailableQty}}</td>
           </tr>
             @endforeach
             @endif
