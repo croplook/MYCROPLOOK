@@ -2,8 +2,8 @@
 
 @section('content')
 <div>
-     <h4><strong>My Orders</strong></h4><hr>
-     <strong>Orders Confirmation</strong>
+     <h4><strong>MY ORDERS</strong></h4><hr>
+     <strong>PENDING ORDERS</strong>
       <div id="ordersbtn">
             <a href="{{route('dashboard.CompletedTransaction')}}" class="btn btn-success" style="margin-bottom:1rem">Completed transactions</a>
             <a href="{{route('users.orders-dashboard')}}" class="btn btn-info" style="margin-bottom:1rem">Cancelled Orders</a>
@@ -46,7 +46,7 @@
                     </div>
 <div class="panel panel-default panel-order">
               <div class="panel-heading">
-              <h5><strong>Lists of Reservations</strong></h5>
+              <h5><strong>LIST OF CONFIRMED ORDERS</strong></h5>
                   <div class="btn-group pull-right">
                       <div class="btn-group">
                             <button type="button" class=" btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
@@ -69,13 +69,11 @@
             @foreach ($orders_to_confirm as $order_item)
             @if($order_item->status == "isConfirmed")
                     <div class="block text-center"> <img class="image" src="/storage/uploads/cropImage/{{$order_item->crop_image}}">
-                        <div class="info py-2 px-2">
-                          <div class="row px-3">
+                        <div class="info">
+                          <div class="row">
                             
-                                <a class="btn btnrec cart3" type="button" href="{{route('dashboard.DeliveredOrder', ['deli_id'=> $order_item->io_id])}}"><small class=" mb-1">CONTACT SELLER</small></a>
+                                <a class="btn btnrec cart3" type="button" href="{{route('dashboard.DeliveredOrder', ['deli_id'=> $order_item->io_id])}}">CONTACT FARMER</a>
                             
-                                <a class="mb-0 lg-font btn order3" type="button" href="{{route('dashboard.DeliveredOrder', ['deli_id'=> $order_item->io_id])}}"><small class=" mb-1">RECIEVED</small></a>
-                               
                               </div>
                               <div class="text-left">
                               <h5 class="mb-0 mt-2">{{$order_item->crop_name}}</h5>

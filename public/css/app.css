@@ -169,11 +169,6 @@ sup {
   top: -0.5em;
 }
 
-#ordersbtn{
-  position: relative;
-  float: right;
-}
-
 a {
   color: #3490dc;
   text-decoration: none;
@@ -182,7 +177,7 @@ a {
 
 a:hover {
   color: #1d68a7;
-  text-decoration: none;
+  text-decoration: underline;
 }
 
 a:not([href]) {

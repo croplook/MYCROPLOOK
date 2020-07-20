@@ -5,7 +5,9 @@ body {
     background-color: #fff;
     background-repeat: no-repeat
 }
-
+#ordersbtn{
+    float: right;
+}
 .block {
     position: relative;
     width: 22%;
@@ -39,13 +41,7 @@ a {
 .cart:hover {
     background-color: #00796B;
 }
-.order3 {
-    color: #272e2d;
-    padding: 6px 5px;
-    width: 40%;
-    border: 2px solid #d11212;
-    cursor: pointer
-}
+
 .btnrec {
     display: inline-block;
     color: #212529;
@@ -63,15 +59,22 @@ a {
     border-radius: 0.25rem;
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
-.order3:hover {
-    color: #fff;
-    background-color: #be1616;
-}
-.cart3 {
-    background-color: #26A69A;
+.order3 {
+    background-color: #10da09;
     color: #fff;
     padding: 6px;
-    width: 55%;
+    width: 40%;
+    border: 2px solid #2ca71b;
+    cursor: pointer;
+}
+.order3:hover {
+    background-color: #0ff11b;
+}
+.cart3 {
+    text-align: left;
+    background-color: #26A69A;
+    color: #fff;
+    width: 80%;
     margin-right: 2%;
     border: 2px solid #2ca71b;
     cursor: pointer

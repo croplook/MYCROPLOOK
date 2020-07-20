@@ -167,3 +167,7 @@ Route::get('/dashboard', 'DashboardController@index');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+if (env('APP_ENV') === 'production') {
+    URL::forceSchema('https');
+}
