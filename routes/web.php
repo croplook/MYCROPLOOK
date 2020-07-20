@@ -13,9 +13,6 @@ use Carbon\Carbon;
 */
 
 
-if (env('APP_ENV') === 'production') {
-    URL::forceSchema('https');
-}
 //click sa reserve crop
 Route::get('/reservation/start-reservation/{id}',
 ['uses' => 'ReservationController@startReservation',
