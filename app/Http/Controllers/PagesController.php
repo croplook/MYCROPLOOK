@@ -47,7 +47,7 @@ class PagesController extends Controller
         ->pluck('sumcropqty','crop_name');
 
        $totalPrice = totalChart::orderBy('created_at')
-        ->pluck('avgCropPrice','crop_name');
+        ->pluck('avgcropprice','crop_name');
 
 
         $salesKg = cropSalesChart::orderBy('created_at')
