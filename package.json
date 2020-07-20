@@ -29,12 +29,12 @@
         "laravel-echo": "^1.8.0",
         "pusher-js": "^5.1.1"
     },
-    
+    {
         "name": "croplook-test",
         "description": "Croplook Capstone System",
         "version": "1.0.0",
         "engines": {
           "node": "v12.18.2"
         }
-      
+      }
 }
