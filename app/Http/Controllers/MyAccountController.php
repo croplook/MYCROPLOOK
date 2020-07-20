@@ -212,6 +212,23 @@ public function myOrders()
     ->with('orders_to_confirm', $orders_to_confirm);
 
 }
+public function getCancelledOrders($canc_id)
+{
+    if(!Gate::allows('isBuyer')){
+        abort(404, 'Sorry, the page you are looking for could not be found');
+    }
+    $indi_order = IndividualOrder::find($canc_id);
+    $indi_order->status = "isCancelled";
+    
+    $indi_order->save();
+    
+    $current_user_id = auth()->user()->id;
+    $orders_to_confirm = IndividualOrder::where('user_id', $current_user_id)->get();
+    return redirect()->route('myorders')
+    ->with('success', 'Order Cancelled!')
+    ->with('orders_to_confirm', $orders_to_confirm);
+}
+
 
 public function getUserInvoice($orders_id)
 {

@@ -74,6 +74,13 @@ Route::get('/users/declining/{decl_id}',
 ['uses' => 'DashboardController@getDeclinedOrders',
 'as' => 'dashboard.DeclinedOrder']);
 
+// click sa decline orders 
+Route::get('/users/cancelling/{canc_id}',
+['uses' => 'MyAccountController@getCancelledOrders',
+'as' => 'myaccount.CancelledOrder']);
+
+
+
 //click sa completed orders by farmers
 Route::get('/users/completed-transactions/', ['uses' => 'DashboardController@getCompletedTransaction', 'as' => 'dashboard.CompletedTransaction']);
 

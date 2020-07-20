@@ -62,8 +62,8 @@ a {
 .order3 {
     background-color: #10da09;
     color: #fff;
-    padding: 6px;
-    width: 40%;
+    width: 48%;
+
     border: 2px solid #2ca71b;
     cursor: pointer;
 }
@@ -79,8 +79,34 @@ a {
     border: 2px solid #2ca71b;
     cursor: pointer
 }
+.cancelledorder{
+    background-color: #9c0000;
+    color: #fff;
+    padding: 6px;
+    width: 100%;
+    margin-right: 2%;
+    border: 2px solid #880202;
+    cursor: pointer
+}
+
+.cancelledorder:hover {
+    background-color: #ff1b1b;
+}
 
 .cart3:hover {
+    background-color: #00796B;
+}
+.cart4 {
+    text-align: left;
+    background-color: #26A69A;
+    color: #fff;
+    width: 48%;
+    margin-right: 2%;
+    border: 2px solid #2ca71b;
+    cursor: pointer
+}
+
+.cart4:hover {
     background-color: #00796B;
 }
 .cart2 {

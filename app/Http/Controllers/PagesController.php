@@ -44,17 +44,17 @@ class PagesController extends Controller
         // $chart->dataset('Crops', 'line', $allPosts->values());
 
         $totalQty = totalChart::orderBy('created_at')
-        ->pluck('sumCropQty','crop_name');
+        ->pluck('sumcropqty','crop_name');
 
        $totalPrice = totalChart::orderBy('created_at')
         ->pluck('avgCropPrice','crop_name');
 
 
         $salesKg = cropSalesChart::orderBy('created_at')
-        ->pluck('totalKgSold','crop_name');
+        ->pluck('totalkgsold','crop_name');
 
         $salesFixedQuantity = cropSalesChart::orderBy('created_at')
-        ->pluck('totalFixedQty','crop_name');
+        ->pluck('totalfixedqty','crop_name');
 
 
         $chart = new productsChart;
@@ -76,10 +76,10 @@ class PagesController extends Controller
         ->backgroundColor('grey');
 
         $data = cropSalesChart::orderBy('created_at')
-        ->pluck('totalFixedQty', 'totalKgSold');
+        ->pluck('totalfixedqty', 'totalkgsold');
 
         $salesPercentage = cropSalesChart::orderBy('created_at')
-        ->pluck('totalPercentage','crop_name');
+        ->pluck('totalpercentage','crop_name');
 
 
        $salesChart = new postsChart;

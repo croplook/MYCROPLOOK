@@ -83,15 +83,15 @@ public function prodStat()
 
     //Crop Availability
     $totalQty = farmerTotalQty::where('user_id', $user_id)
-    ->pluck('sumCropQty','crop_name');
+    ->pluck('sumcropqty','crop_name');
 
     //Crop Sales Kilogram
     $salesKg = farmerChart::where('user_id', $user_id)
-    ->pluck('totalKgSold','crop_name');
+    ->pluck('totalkgsold','crop_name');
 
     //Crops Fixed Quantity
     $salesFixedQuantity = farmerChart::where('user_id', $user_id)
-    ->pluck('totalFixedQty','crop_name');
+    ->pluck('totalfixedqty','crop_name');
 
 
     $chart = new prodChart;
